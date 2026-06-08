@@ -1,0 +1,95 @@
+/* ##### CSS file for small cards (grid) in <main> */
+
+.pokemon-card-small {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    
+    background-color: #1A1D24;
+
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 20px;
+
+    /* transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s ease; */
+
+    padding: 1.5rem;
+}
+
+
+.pokemon-card-small img {
+    width: 120px;
+    height: 120px;
+
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.3));
+    transition: transform 0.3s ease;
+}
+
+
+.pokemon-card-small:hover {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+
+.pokemon-card-small:hover img {
+    transform: scale(1.1);
+}
+
+
+.pokemon-card-small-id {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #8A92A3;
+    letter-spacing: 1px;
+
+    margin-bottom: 0.25rem;
+}
+
+
+.pokemon-card-small-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #F5F6F8;
+    letter-spacing: -0.3px;
+    text-transform: capitalize;
+
+    margin-bottom: 1rem;
+}
+
+
+.pokemon-card-small-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 50%;
+
+    width: 200px;
+    height: 200px;
+    padding: 10px;
+    margin-bottom: 1.2rem;
+}
+
+
+.pokemon-card-small-badge-container {
+    display: flex;
+    gap: 10px;
+
+    margin-top: auto;
+}
+
+
+.type-badge {
+    color: #FFFFFF;
+    font-size: 0.7rem;
+    font-weight: 700;
+
+    border: 1px solid;
+    border-radius: 8px;
+    
+    text-transform: uppercase;
+
+    padding: 5px 12px;
+}

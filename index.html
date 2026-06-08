@@ -1,11 +1,78 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokedex</title>
+
+    <!-- CSS files -->
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./styles/standard.css">
+    <link rel="stylesheet" href="./styles/fonts.css">
+    <link rel="stylesheet" href="./styles/card-small.css">
+    <link rel="stylesheet" href="./styles/card-large.css">
 </head>
+
 <body>
-    
+    <header>
+        <div class="header-container-logo-title">
+            <img src="./assets/img/placeholder_pokedex_logo.png" alt="Pokedox logo" class="header-logo">
+            <h1>Pokedex</h1>
+        </div>
+            <input type="text" placeholder="Search Pokemon ..." data-id="search-input" class="header-search-bar">
+    </header>
+
+
+
+    <main class="content-main">
+        <section class="pokemon-cards-main">
+
+            <div class="pokemon-card-small">
+                <span class="pokemon-card-small-id">#0001</span>
+                <h2 class="pokemon-card-small-name">Name des Pokemons</h2>
+
+                <div class="pokemon-card-small-image-container">
+                    <img src="./assets/img/placeholder_pokemon_small.png" alt="Pokemon picture">
+                </div>
+
+                <div class="pokemon-card-small-badge-container">
+                    <span class="type-badge">Grass</span>
+                    <span class="type-badge">Poison</span>
+                </div>
+            </div>
+
+
+            <div class="pokemon-card-small">
+                <span class="pokemon-card-small-id">#0001</span>
+                <h2 class="pokemon-card-small-name">Name des Pokemons</h2>
+
+                <div class="pokemon-card-small-image-container">
+                    <img src="./assets/img/placeholder_pokemon_small.png" alt="Pokemon picture">
+                </div>
+
+                <div class="pokemon-card-small-badge-container">
+                    <span class="type-badge">Grass</span>
+                    <span class="type-badge">Poison</span>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+
+
+    <footer>
+        <p>Erstellt: Timo (Juni 2026)</p>
+        <a href="#">Impressum</a>
+        <a href="https://github.com/TimoIndlekofer" target="_blank">GitHub</a>
+        <a href="https://pokeapi.co/" target="_blank">PokéAPI</a>
+    </footer>
+
+
+    <!-- JavaScript files -->
+    <script src="./scripts/template.js"></script>
+    <script src="./script.js"></script>
 </body>
+
 </html>
