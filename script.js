@@ -2,15 +2,16 @@
 
 let allPokemons = [];
 let pokemonCardsData = [];
+let offset = 20;
 
 
 function init() {
     console.log(allPokemons);
-    fetchPokemon();
+    fetchAllPokemons();
 }
 
 
-async function fetchPokemon() {
+async function fetchAllPokemons() {
     try {
         let response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=20&offset=0');
         let responseAsJSON = await response.json();
@@ -46,4 +47,16 @@ async function renderPokemons() {
 }
 
 
-
+async function fetchMorePokemons() {
+    try {
+        let response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=20&offset=' + offset);
+        let responseAsJSON = await response.json();
+        console.log(response);
+        offset += 20;
+        
+        allPokemons = responseAsJSON.results;
+        renderPokemons();
+    } catch (error) {
+        console.log('Fehler beim Laden der Daten:', error);        
+    }
+}

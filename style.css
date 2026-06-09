@@ -69,3 +69,39 @@
 }
 
 
+.button-load-more-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+
+.button-load-more {
+    background-color: rgba(26, 29, 36, 0.5);
+
+    color: #E0E0E0;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+
+    cursor: pointer;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+
+    padding: 12px 30px;
+}
+
+
+.button-load-more:hover {
+    background-color: #1A1D24;
+
+    color: #FFFFFF;
+
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+

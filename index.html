@@ -26,38 +26,10 @@
 
 
     <main class="content-main" data-id="content">
-        <section class="pokemon-cards-main" id="pokemon-cards-container">
-
-            <button class="pokemon-card-small" data-id="card">
-                <span class="pokemon-card-small-id">#0001</span>
-                <span class="pokemon-card-small-name">Name des Pokemons</span>
-
-                <span class="pokemon-card-small-image-container">
-                    <img src="./assets/img/placeholder_pokemon_small.png" alt="Pokemon picture">
-                </span>
-
-                <span class="pokemon-card-small-badge-container">
-                    <span class="type-badge">Grass</span>
-                    <span class="type-badge">Poison</span>
-                </span>
-            </button>
-
-            <!-- 1. Variante -->
-            <!-- <button class="pokemon-card-small">
-                <span class="pokemon-card-small-id">#0001</span>
-                <h2 class="pokemon-card-small-name">Name des Pokemons</h2>
-
-                <div class="pokemon-card-small-image-container">
-                    <img src="./assets/img/placeholder_pokemon_small.png" alt="Pokemon picture">
-                </div>
-
-                <div class="pokemon-card-small-badge-container">
-                    <span class="type-badge">Grass</span>
-                    <span class="type-badge">Poison</span>
-                </div>
-            </button> -->
-
-        </section>
+        <section class="pokemon-cards-main" id="pokemon-cards-container"></section>
+        <div class="button-load-more-container">
+            <button class="button-load-more" data-id="load-more-button" onclick="fetchMorePokemons()">Load more Pokemon</button>
+        </div>
     </main>
 
 
