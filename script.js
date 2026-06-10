@@ -11,6 +11,18 @@ function init() {
 }
 
 
+async function renderPokemons() {
+    let pokemonCardsContainer = document.getElementById('pokemon-cards-container');
+    pokemonCardsContainer.innerHTML = '';
+
+    for (let i = 0; i < allPokemons.length; i++) {
+        const pokemonURL = allPokemons[i].url;
+        const pokemonDetails = await fetchPokemonDetails(pokemonURL);
+    }
+    pokemonCardsContainer.innerHTML = pokemonCardsData; 
+}
+
+
 async function fetchAllPokemons() {
     try {
         let response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=20&offset=0');
@@ -32,18 +44,6 @@ async function fetchPokemonDetails(pokemonURL) {
     } catch (error) {
         console.log('Fehler beim Laden der Daten:', error);
     }
-}
-
-
-async function renderPokemons() {
-    let pokemonCardsContainer = document.getElementById('pokemon-cards-container');
-    pokemonCardsContainer.innerHTML = '';
-
-    for (let i = 0; i < allPokemons.length; i++) {
-        const pokemonURL = allPokemons[i].url;
-        const pokemonDetails = await fetchPokemonDetails(pokemonURL);
-    }
-    pokemonCardsContainer.innerHTML = pokemonCardsData; 
 }
 
 
