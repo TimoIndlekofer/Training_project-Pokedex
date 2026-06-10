@@ -22,20 +22,22 @@
             <img src="./assets/img/placeholder_pokedex_logo.png" alt="Pokedox logo" class="header-logo">
             <h1>Pokedex</h1>
         </div>
+
+        <!-- Search bar -->
         <div class="header-search-bar-container">
             <span class="header-search-bar-icon">🔍</span>
             <input type="text" placeholder="Search Pokemon ..." oninput="filterAndShowPokemon(this.value)" data-id="search-input" class="header-search-bar" id="search-bar-input">
         </div>
     </header>
 
-
     <!-- Main (Pokemon cards) -->
     <main class="content-main" data-id="content">
         <section class="pokemon-cards-main" id="pokemon-cards-container"></section>
+
+        <!-- Load more Pokemons button -->
         <div class="button-load-more-container">
             <button class="button-load-more" id="load-more-pokemons" data-id="load-more-button" onclick="fetchMorePokemons()">Load more Pokemon</button>
         </div>
-
 
         <!-- Search bar error message -->
         <div class="no-results-container" id="no-results-error-message">
@@ -44,7 +46,6 @@
         </div>
     </main>
 
-
     <!-- Footer -->
     <footer>
         <p>Erstellt: Timo (Juni 2026)</p>
@@ -52,7 +53,6 @@
         <a href="https://github.com/TimoIndlekofer" target="_blank">GitHub</a>
         <a href="https://pokeapi.co/" target="_blank">PokéAPI</a>
     </footer>
-
 
     <!-- JavaScript files -->
     <script src="./scripts/template.js"></script>
