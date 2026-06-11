@@ -6,6 +6,7 @@ const searchBar = document.getElementById('search-bar-input');
 const searchButton = document.getElementById('search-bar-button');
 const headerSearchBar = document.getElementById('search-bar-container');
 const letterMessage = document.getElementById('search-bar-letter-message');
+const loadingSpinner = document.getElementById('loading-spinner');
 
 let pokemonCardsContainer = document.getElementById('pokemon-cards-container');
 
@@ -50,14 +51,11 @@ async function fetchPokemonDetails(pokemonURL) {
 
 
 async function renderPokemons(pokemonList) {
-    // let pokemonCardsContainer = document.getElementById('pokemon-cards-container');
     pokemonCardsContainer.innerHTML = '';
 
     let pokemonCardsData = [];
 
     for (let i = 0; i < pokemonList.length; i++) {
-        // const pokemonURL = allPokemons[i].url;
-
         if(!pokemonList[i]) { continue; }
 
         const pokemonURL = pokemonList[i].url;
@@ -65,22 +63,39 @@ async function renderPokemons(pokemonList) {
         pokemonCardsData += pokemonDetails;
     }
     pokemonCardsContainer.innerHTML = pokemonCardsData; 
+
+    if (loadingSpinner) {
+        loadingSpinner.style.display = 'none';
+    }
 }
 
 
 async function fetchMorePokemons() {
     try {
+        loadingSpinner.style.display = 'flex';
         let response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=20&offset=' + offset);
         let responseAsJSON = await response.json();
-        console.log(response);
         offset += 20;
-        
+
+        loadMoreButtonDeactivated();
         allPokemons.push(...responseAsJSON.results);
-        renderPokemons(allPokemons);
-        console.log(allPokemons);
+        await renderPokemons(allPokemons);
+        loadMoreButtonActivated();
     } catch (error) {
         console.log('Fehler beim Laden der Daten:', error);        
     }
+}
+
+
+function loadMoreButtonDeactivated() {
+    loadMoreButton.disabled = true;
+    loadMoreButton.classList.add('deactivate');
+}
+
+
+function loadMoreButtonActivated() {
+    loadMoreButton.disabled = false;
+    loadMoreButton.classList.remove('deactivate');
 }
 
 
