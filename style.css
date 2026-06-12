@@ -4,8 +4,10 @@
 
 .header-container-logo-title {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+
+    gap: 10px;
 
     width: 100%;
     max-width: 1440px;
@@ -30,8 +32,27 @@
 
     transition: all 0.3s ease;
 
-    padding: 6px 14px;
-    margin-bottom: 20px;
+    /* padding: 6px 14px; */
+    /* margin-bottom: 20px; */
+
+    overflow: hidden;
+
+    width: 100%;
+    max-width: 500px;
+    /* margin: 20px auto; */
+    margin: 0 auto;
+}
+
+
+.header-search-bar-icon {
+    display: inline-block;
+
+    font-size: 16px;
+
+    user-select: none;
+
+    padding-left: 18px;
+    margin-right: 8px;
 }
 
 
@@ -62,14 +83,18 @@
     border: none;
     outline: none;
 
-    padding: 7px;
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 
+    /* padding: 7px; */
+    
     width: 100%;
+    padding: 14px 12px;
 }
 
 
 .header-search-bar::placeholder {
     color: rgba(255, 255, 255, 0.4);
+    font-size: 0.85rem;
 }
 
 
@@ -79,7 +104,7 @@
 }
 
 
-.header-search-bar:focus-within {
+.header-search-bar:focus-within .header-search-bar-clear-button {
     background-color: #1A1D24;
     border-color: rgba(255, 255, 255, 0.4);
 
@@ -87,27 +112,55 @@
 }
 
 
-.header-search-bar-icon {
-    display: inline-block;
+.header-search-bar-clear-button {
+    display: none;
+    align-items: center;
+    align-self: stretch;
 
-    font-size: 16px;
+    background: transparent;
+    background-color: transparent;
 
-    user-select: none;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.8rem;
 
-    margin-right: 8px;
+    cursor: pointer;
+    
+    border: none;
+    outline: none;
+
+    box-shadow: none;
+
+    transition: color 0.2s ease;
+
+    padding: 0 10px;
+}
+
+
+.header-search-bar-clear-button:hover {
+    color: #FFFFFF;
 }
 
 
 .header-search-bar-button {
-    background-color: rgba(26, 29, 36, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: stretch;
+
+    /* background-color: rgba(26, 29, 36, 0.5); */
+    background-color: rgba(255, 255, 255, 0.05);
 
     color: #E0E0E0;
     font-size: 1rem;
     font-weight: 700;
     letter-spacing: 1px;
 
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 20px;
+    /* border: 1px solid rgba(255, 255, 255, 0.08); */
+    border: none;
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    /* border-radius: 20px; */
 
     cursor: pointer;
 
@@ -135,6 +188,7 @@
 
     color: red;
 
+    margin-top: 10px;
     margin-bottom: 10px;
 
     visibility: hidden;
@@ -158,6 +212,8 @@
 
 .pokemon-cards-main {
     display: grid;
+    justify-content: center;
+    justify-items: center;
 
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
 
@@ -284,4 +340,17 @@
     font-size: 14px;
 
     margin: 0;
+}
+
+
+
+
+
+/* ##### Tabler Version (min-width: 768px */
+
+@media (min-width: 768px) {
+
+    .header-search-bar::placeholder {
+        font-size: 1rem;
+    }
 }

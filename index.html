@@ -27,6 +27,7 @@
         <div class="header-search-bar-container" id="search-bar-container">
             <span class="header-search-bar-icon">🔍</span>
             <input type="text" placeholder="Search Pokemon ..." data-id="search-input" class="header-search-bar" id="search-bar-input" oninput="if(this.value.trim() === '') renderPokemons(allPokemons), startSearch()">
+            <button type="button" class="header-search-bar-clear-button" id="search-bar-clear-button">X</button>
             <button class="header-search-bar-button" id="search-bar-button" onclick="startSearch()">Search</button>
         </div>
         <div class="header-search-bar-letters-message" id="search-bar-letter-message">
@@ -39,10 +40,10 @@
         <section class="pokemon-cards-main" id="pokemon-cards-container"></section>
 
         <!-- Loading spinner -->
-         <div class="containt-main-loading-spinner-container" id="loading-spinner">
+        <div class="containt-main-loading-spinner-container" id="loading-spinner">
             <div class="pokeball-spinner"></div>
             <p>Catching Pokemon ...</p>
-         </div>
+        </div>
 
         <!-- Load more Pokemons button -->
         <div class="button-load-more-container">

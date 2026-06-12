@@ -3,6 +3,7 @@
 const errorMessage = document.getElementById('no-results-error-message');
 const loadMoreButton = document.getElementById('load-more-pokemons');
 const searchBar = document.getElementById('search-bar-input');
+const clearButton = document.getElementById('search-bar-clear-button');
 const searchButton = document.getElementById('search-bar-button');
 const headerSearchBar = document.getElementById('search-bar-container');
 const letterMessage = document.getElementById('search-bar-letter-message');
@@ -19,6 +20,7 @@ let offset = 20;
 function init() {
     console.log(allPokemons);
     fetchAllPokemons();
+    initClearButton();
     searchButtonEnterKey();
 }
 
@@ -96,6 +98,7 @@ function loadMoreButtonDeactivated() {
 function loadMoreButtonActivated() {
     loadMoreButton.disabled = false;
     loadMoreButton.classList.remove('deactivate');
+    loadMoreButton.style.display = 'block';
 }
 
 
@@ -112,6 +115,31 @@ function checkSearchBarInput(filterWord) {
         filterAndShowPokemons(filterWord);
         return;
     }
+}
+
+
+function initClearButton() {
+    searchBar.addEventListener('input', toggleSearchBarClearButton);
+    clearButton.addEventListener('click', clearSearchBar);
+}
+
+
+function toggleSearchBarClearButton() {
+    if (searchBar.value.length > 0) {
+        clearButton.style.display = 'flex';
+    } else {
+        clearButton.style.display = 'none';
+    }
+}
+
+
+function clearSearchBar() {
+    searchBar.value = '';
+    clearButton.style.display = 'none';
+    letterMessage.style.visibility = 'hidden';
+    searchBar.focus();
+    renderPokemons(allPokemons);
+    loadMoreButtonActivated();
 }
 
 

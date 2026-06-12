@@ -15,7 +15,13 @@
 
     /* transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s ease; */
 
+    flex-shrink: 0;
+
     padding: 1.5rem;
+    /* width: 270px; */
+    width: 100%;
+    max-width: 270px;
+    height: 350px;
 }
 
 
@@ -94,7 +100,8 @@
 
 
 .type-badge {
-    color: #FFFFFF;
+    /* Alte Variante: */
+    /* color: #FFFFFF;
     font-size: 0.7rem;
     font-weight: 700;
 
@@ -102,6 +109,24 @@
     border-radius: 8px;
     
     text-transform: uppercase;
+
+    padding: 5px 12px; */
+
+
+    /* Neue Variante: */
+    background-color: rgba(255, 255, 255, 0.3);
+
+    color: #FFFFFF;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
 
     padding: 5px 12px;
 }

@@ -12,22 +12,26 @@ html {
 
 
 body {
+    background-color: #11141A;
+
     line-height: 1.5;
     font-family: sans-serif;
 
-    background-color: #11141A;
 }
 
 
 header {
     background-color: #1A1D24;
 
-
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 
     position: sticky;
     top: 0;
     z-index: 100;
+
+    padding-left: 16px;
+    padding-right: 16px;
+    width: 100%;
 }
 
 
