@@ -26,7 +26,8 @@
         <!-- Search bar -->
         <div class="header-search-bar-container" id="search-bar-container">
             <span class="header-search-bar-icon">🔍</span>
-            <input type="text" placeholder="Search Pokemon ..." data-id="search-input" class="header-search-bar" id="search-bar-input" oninput="if(this.value.trim() === '') renderPokemons(allPokemons), startSearch()">
+            <input type="text" placeholder="Search Pokemon ..." data-id="search-input" class="header-search-bar"
+                id="search-bar-input" oninput="if(this.value.trim() === '') renderPokemons(allPokemons), startSearch()">
             <button type="button" class="header-search-bar-clear-button" id="search-bar-clear-button">X</button>
             <button class="header-search-bar-button" id="search-bar-button" onclick="startSearch()">Search</button>
         </div>
@@ -36,6 +37,7 @@
     </header>
 
     <!-- Main -->
+    <button onclick="showPokemonDetailsInDialog()">Test für Dialog-Fenster</button>
     <main class="content-main" data-id="content">
         <!-- Search bar error message -->
         <div class="no-results-container" id="no-results-error-message">
@@ -65,6 +67,107 @@
         <a href="https://github.com/TimoIndlekofer" target="_blank">GitHub</a>
         <a href="https://pokeapi.co/" target="_blank">PokéAPI</a>
     </footer>
+
+    <!-- Dialog for Pokemon details -->
+    <dialog class="dialog-card-large" id="dialog-pokemon-details">
+        <div class="dialog-wrapper">
+            <!-- Dialog header -->
+            <header class="dialog-header-container">
+                <div class="dialog-header-top">
+                    <span class="dialog-header-id">#1</span>
+                    <button class="dialog-header-close-button">X</button>
+                </div>
+                <div class="dialog-header-bottom">
+                    <h3>Pokemon name</h3>
+                    <div class="dialog-header-bottom-badges-container">
+                        <span class="type-badge">Badge 1</span>
+                        <span class="type-badge">Badge 2</span>
+                    </div>
+                    <img src="./assets/img/placeholder_pokemon_small.png" alt="Pokemon picture" class="dialog-img">
+                </div>
+            </header>
+
+            <!-- Dialog main -->
+            <main class="dialog-main-container">
+                <!-- Dialog nav -->
+                <nav class="dialog-tab-nav">
+                    <button class="dialog-tab-button">About</button>
+                    <button class="dialog-tab-button">Base stats</button>
+                    <button class="dialog-tab-button">Evolution</button>
+                </nav>
+
+                <!-- Dialog tab: About -->
+                <div class="dialog-tab-content">
+                    <h4>Basic data</h4>
+                    <p>Species: Bulba</p>
+                    <p>Height: 0,4 m</p>
+                    <p>Weight: 10,0 kg</p>
+                    <p>Abilities: Nr1, Nr2</p>
+
+                    <h4>Environment</h4>
+                    <p>Egg groups: Nr1, Nr2</p>
+                    <p>Habitat: Forest</p>
+                </div>
+
+                <!-- Dialog tab: Base stats -->
+                <div class="dialog-tab-content">
+                    <h4>Base stats</h4>
+                    <div>
+                        <span>HP: </span>
+                        <span>80</span>
+                        <div>
+                            <div></div>
+                        </div>
+                    </div>
+
+                    <p>HP: 80</p>
+                    <p>Attack: 10</p>
+                    <p>Defense: 8</p>
+                    <p>Sp. Attack: 20</p>
+                    <p>Sp. Defense: 30</p>
+                    <p>Speed: 50</p>
+                    <p>Total: 150</p>
+                </div>
+
+                <!-- Dialog tab: Evolution -->
+                 <div class="dialog-tab-evolution-container dialog-tab-content">
+                    <h4>Evolution</h4>
+
+                    <div class="dialog-tab-evolution-chain">
+                        <div>
+                            <img src="./assets/img/placeholder_pokemon_small.png" alt="Pokemon picture">
+                            <span>Name Pokemon</span>
+                        </div>
+                        <div>
+                            <span>Condition</span>
+                            <span>-></span>
+                        </div>
+
+                        <div>
+                            <img src="./assets/img/placeholder_pokemon_small.png" alt="Pokemon picture">
+                            <span>Name Pokemon</span>
+                        </div>
+                        <div>
+                            <span>Condition</span>
+                            <span>-></span>
+                        </div>
+
+                        <div>
+                            <img src="./assets/img/placeholder_pokemon_small.png" alt="Pokemon picture">
+                            <span>Name Pokemon</span>
+                        </div>
+                    </div>
+                 </div>
+            </main>
+
+            <!-- Dialog footer -->
+            <footer class="dialog-footer">
+                <button class="dialog-nav-button">Back</button>
+                <button class="dialog-nav-button">Next</button>
+            </footer>
+        </div>
+
+    </dialog>
 
     <!-- JavaScript files -->
     <script src="./scripts/template.js"></script>

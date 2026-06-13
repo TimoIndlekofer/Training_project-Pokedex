@@ -1,0 +1,260 @@
+/* ##### CSS file for large Pokemon card in dialog window ##### */
+
+/* Dialog window */
+.dialog-card-large {
+    background-color: #11141A;
+
+    color: #F5F6F8;
+
+    border: none;
+    border-radius: 20px;
+
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+
+    width: 90%;
+    max-height: 90vh;
+    padding: 0;
+}
+
+
+.dialog-card-large::backdrop {
+    background-color: rgba(10, 12, 15, 0.4);
+    backdrop-filter: blur(2px);
+}
+
+
+.dialog-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    /* Original bisher: */
+    /* background-color: #11141A; */
+
+    /* Beispiel: */
+    background-color: #558C33;
+
+    max-height: 90vh;
+}
+
+
+/* Dialog header */
+
+.dialog-header-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    position: relative;
+
+    /* Original bisher: */
+    /* background-color: #1A1D24; */
+
+    /* Beispiel: */
+    background-color: #558C33;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+    padding: 16px;
+}
+
+
+.dialog-header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+
+.dialog-header-id {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+
+.dialog-header-close-button {
+    /* Original bisher: */
+    /* background: #242933; */
+
+    /* Beispiel: */
+    background-color: #558C33;
+
+    color: #F5F6F8;
+    font-size: 1.2rem;
+
+    border: none;
+    border-radius: 50%;
+
+    transition: all 0.3s ease;
+
+    cursor: pointer;
+
+    width: 35px;
+    height: 35px;
+}
+
+
+.dialog-header-close-button:hover {
+    /* Original bisher: */
+    /* background-color: #1A1D24; */
+
+    color: #FFFFFF;
+
+    box-shadow: 
+        inset 0 0 5px 2px rgba(255, 255, 255, 0.15),
+        inset 0 3px 8px rgba(255, 255, 255, 0.15);
+}
+
+
+.dialog-header-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    width: 100%;
+}
+
+
+.dialog-header-bottom-badges-container {
+    display: flex;
+
+    gap: 10px;
+
+    margin-bottom: 12px;
+}
+
+
+.dialog-img {
+    object-fit: contain;
+
+    filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.5));
+
+    width: 130px;
+    height: 130px;
+}
+
+
+/* Dialog main */
+
+.dialog-main-container {
+    overflow-y: auto;
+    flex-grow: 1;
+
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+
+    padding: 16px;
+}
+
+
+.dialog-tab-nav {
+    display: flex;
+    justify-content: space-between;
+
+    background-color: #1A1D24;
+
+    border-radius: 10px;
+
+    padding: 4px;
+    margin-bottom: 16px;
+}
+
+
+.dialog-tab-button {
+    background: none;
+
+    color: #F5F6F8;
+    font-size: 0.85rem;
+    font-weight: 700;
+
+    border: none;
+    border-radius: 8px;
+
+    flex: 1;
+
+    transition: all 0.3s ease;
+
+    cursor: pointer;
+
+    padding: 8px 4px;
+}
+
+
+.dialog-tab-button:hover {
+    background-color: #1A1D24;
+
+    color: #FFFFFF;
+
+    box-shadow: 
+        inset 0 0 5px 2px rgba(255, 255, 255, 0.15),
+        inset 0 3px 8px rgba(255, 255, 255, 0.15);
+}
+
+
+.dialog-tab-button.active {
+    background-color: #242933;
+    
+    color: #FFF;
+}
+
+
+.dialog-tab-content {
+    line-height: 1.6;
+}
+
+
+.dialog-tab-content.hidden {
+    display: none;
+}
+
+
+/* Dialog footer */
+
+.dialog-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    background-color: #1A1D24;
+
+    border-top: 1px solid #242933;
+
+    gap: 16px;
+
+    padding: 12px 16px;
+}
+
+
+.dialog-nav-button {
+    background-color: #242933;
+
+    color: #F5F6F8;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1;
+
+    border: 1px solid #3A3F4D;
+    border-radius: 8px;
+
+    flex: 1;
+
+    transition: background-color 0.2s, all 0.3s ease;
+
+    cursor: pointer;
+
+    padding: 5px;
+}
+
+
+.dialog-nav-button:hover {
+    background-color: #1A1D24;
+
+    color: #FFFFFF;
+
+    box-shadow: 
+        inset 0 0 5px 2px rgba(255, 255, 255, 0.15),
+        inset 0 3px 8px rgba(255, 255, 255, 0.15);
+}

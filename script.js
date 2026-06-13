@@ -208,3 +208,9 @@ async function filterAndShowPokemons(filterWord) {
     checkCurrentPokemons(currentPokemons);
     renderPokemons(currentPokemons);
 }
+
+function showPokemonDetailsInDialog() {
+    const test = document.getElementById('dialog-pokemon-details');
+    
+    test.showModal();
+}

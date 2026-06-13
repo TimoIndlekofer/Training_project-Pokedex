@@ -1,4 +1,4 @@
-/* ##### CSS file for small cards (grid) in <main> ##### */
+/* ##### CSS file for small Pokemon cards (grid) in <main> ##### */
 
 .pokemon-card-small {
     display: flex;
@@ -93,6 +93,7 @@
 
 .pokemon-card-small-badge-container {
     display: flex;
+    
     gap: 10px;
 
     margin-top: auto;
