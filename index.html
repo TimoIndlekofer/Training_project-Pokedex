@@ -35,8 +35,15 @@
         </div>
     </header>
 
-    <!-- Main (Pokemon cards) -->
+    <!-- Main -->
     <main class="content-main" data-id="content">
+        <!-- Search bar error message -->
+        <div class="no-results-container" id="no-results-error-message">
+            <h2>No Pokemon found!</h2>
+            <p>Please check your spelling or try a different Pokemon name.</p>
+        </div>
+
+        <!-- Pokemon cards -->
         <section class="pokemon-cards-main" id="pokemon-cards-container"></section>
 
         <!-- Loading spinner -->
@@ -48,12 +55,6 @@
         <!-- Load more Pokemons button -->
         <div class="button-load-more-container">
             <button class="button-load-more" id="load-more-pokemons" data-id="load-more-button" onclick="fetchMorePokemons()">Load more Pokemon</button>
-        </div>
-
-        <!-- Search bar error message -->
-        <div class="no-results-container" id="no-results-error-message">
-            <h2>No Pokemon found!</h2>
-            <p>Please check your spelling or try a different Pokemon name.</p>
         </div>
     </main>
 

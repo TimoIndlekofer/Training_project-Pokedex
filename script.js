@@ -19,9 +19,17 @@ let offset = 20;
 
 function init() {
     console.log(allPokemons);
+    startPositionAfterWebsiteLoading();
     fetchAllPokemons();
     initClearButton();
     searchButtonEnterKey();
+}
+
+
+function startPositionAfterWebsiteLoading() {
+    if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+    }
 }
 
 
@@ -75,6 +83,7 @@ async function renderPokemons(pokemonList) {
 async function fetchMorePokemons() {
     try {
         loadingSpinner.style.display = 'flex';
+        pokemonCardsContainer.classList.remove('pokemon-cards-main-height-deactivated');
         let response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=20&offset=' + offset);
         let responseAsJSON = await response.json();
         offset += 20;
@@ -137,6 +146,7 @@ function clearSearchBar() {
     searchBar.value = '';
     clearButton.style.display = 'none';
     letterMessage.style.visibility = 'hidden';
+    errorMessage.style.display = 'none';
     searchBar.focus();
     renderPokemons(allPokemons);
     loadMoreButtonActivated();
@@ -175,6 +185,7 @@ function checkCurrentPokemons(currentPokemons) {
     if (currentPokemons.length === 0) {
         loadMoreButton.style.display = 'none';
         errorMessage.style.display = 'block';
+        pokemonCardsContainer.classList.add('pokemon-cards-main-height-deactivated');
         renderPokemons([]);
         return;
     } else {

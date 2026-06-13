@@ -223,6 +223,11 @@
 }
 
 
+.pokemon-cards-main-height-deactivated {
+    min-height: auto;
+}
+
+
 .containt-main-loading-spinner-container {
     display: none;
     flex-direction: column;
