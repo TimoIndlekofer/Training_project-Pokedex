@@ -75,7 +75,7 @@
             <header class="dialog-header-container">
                 <div class="dialog-header-top">
                     <span class="dialog-header-id">#1</span>
-                    <button class="dialog-header-close-button">X</button>
+                    <button class="dialog-header-close-button" onclick="closeDialog()">X</button>
                 </div>
                 <div class="dialog-header-bottom">
                     <h3>Pokemon name</h3>
@@ -91,13 +91,13 @@
             <main class="dialog-main-container">
                 <!-- Dialog nav -->
                 <nav class="dialog-tab-nav">
-                    <button class="dialog-tab-button">About</button>
-                    <button class="dialog-tab-button">Base stats</button>
-                    <button class="dialog-tab-button">Evolution</button>
+                    <button class="dialog-tab-button" id="dialog-about-button" onclick="showDialogTabAbout()">About</button>
+                    <button class="dialog-tab-button" id="dialog-base-stats-button" onclick="showDialogTabBaseStats()">Base stats</button>
+                    <button class="dialog-tab-button" id="dialog-evolution-button" onclick="showDialogTabEvolution()">Evolution</button>
                 </nav>
 
                 <!-- Dialog tab: About -->
-                <div class="dialog-tab-content">
+                <div class="dialog-tab-content" id="tab-about">
                     <h4>Basic data</h4>
                     <p>Species: Bulba</p>
                     <p>Height: 0,4 m</p>
@@ -110,7 +110,7 @@
                 </div>
 
                 <!-- Dialog tab: Base stats -->
-                <div class="dialog-tab-content">
+                <div class="dialog-tab-content" id="tab-base-stats">
                     <h4>Base stats</h4>
                     <div>
                         <span>HP: </span>
@@ -130,7 +130,7 @@
                 </div>
 
                 <!-- Dialog tab: Evolution -->
-                 <div class="dialog-tab-evolution-container dialog-tab-content">
+                 <div class="dialog-tab-evolution-container dialog-tab-content" id="tab-evolution">
                     <h4>Evolution</h4>
 
                     <div class="dialog-tab-evolution-chain">
@@ -162,8 +162,8 @@
 
             <!-- Dialog footer -->
             <footer class="dialog-footer">
-                <button class="dialog-nav-button">Back</button>
-                <button class="dialog-nav-button">Next</button>
+                <button class="dialog-nav-button"><span>&laquo;</span> Back</button>
+                <button class="dialog-nav-button">Next <span>&raquo;</span></button>
             </footer>
         </div>
 

@@ -9,6 +9,14 @@ const headerSearchBar = document.getElementById('search-bar-container');
 const letterMessage = document.getElementById('search-bar-letter-message');
 const loadingSpinner = document.getElementById('loading-spinner');
 
+const dialogBox = document.getElementById('dialog-pokemon-details');
+const aboutButton = document.getElementById('dialog-about-button');
+const baseStatsButton = document.getElementById('dialog-base-stats-button');
+const evolutionButton = document.getElementById('dialog-evolution-button');
+const aboutTab = document.getElementById('tab-about');
+const baseStatsTab = document.getElementById('tab-base-stats');
+const evolutionTab = document.getElementById('tab-evolution');
+
 let pokemonCardsContainer = document.getElementById('pokemon-cards-container');
 
 let allPokemons = [];
@@ -209,8 +217,53 @@ async function filterAndShowPokemons(filterWord) {
     renderPokemons(currentPokemons);
 }
 
+
 function showPokemonDetailsInDialog() {
-    const test = document.getElementById('dialog-pokemon-details');
-    
-    test.showModal();
+    baseStatsButton.classList.remove('active');
+    evolutionButton.classList.remove('active');
+    aboutTab.style.display = 'block';
+    aboutButton.classList.add('active');
+    dialogBox.showModal();
+}
+
+
+function showDialogTabAbout() {
+    aboutButton.classList.add('active');
+    baseStatsButton.classList.remove('active');
+    evolutionButton.classList.remove('active');
+
+    aboutTab.style.display = 'block';
+    baseStatsTab.style.display = 'none';
+    evolutionTab.style.display = 'none';
+}
+
+
+function showDialogTabBaseStats() {
+    aboutButton.classList.remove('active');
+    baseStatsButton.classList.add('active');
+    evolutionButton.classList.remove('active');
+
+    aboutTab.style.display = 'none';
+    baseStatsTab.style.display = 'block';
+    evolutionTab.style.display = 'none';
+}
+
+
+function showDialogTabEvolution() {
+    aboutButton.classList.remove('active');
+    baseStatsButton.classList.remove('active');
+    evolutionButton.classList.add('active');
+
+    aboutTab.style.display = 'none';
+    baseStatsTab.style.display = 'none';
+    evolutionTab.style.display = 'block';
+}
+
+
+function closeDialog() {
+    aboutTab.style.display = 'none';
+    baseStatsTab.style.display = 'none';
+    evolutionTab.style.display = 'none';
+
+    dialogBox.close();
 }
