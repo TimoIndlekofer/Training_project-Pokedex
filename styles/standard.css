@@ -135,3 +135,16 @@ h3 {
 
     margin: 5px 0;
 }
+
+
+h4 {
+    grid-column: 1 / -1;
+    color: #F5F6F8;
+    font-size: 0.90rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+
+    padding-bottom: 6px;
+    margin: 20px 0 4px 0;
+}

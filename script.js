@@ -219,10 +219,15 @@ async function filterAndShowPokemons(filterWord) {
 
 
 function showPokemonDetailsInDialog() {
+    aboutButton.classList.add('active');
     baseStatsButton.classList.remove('active');
     evolutionButton.classList.remove('active');
-    aboutTab.style.display = 'block';
-    aboutButton.classList.add('active');
+    // aboutTab.style.display = 'block';
+
+    aboutTab.classList.remove('hidden');
+    baseStatsTab.classList.add('hidden');
+    evolutionTab.classList.add('hidden');
+    
     dialogBox.showModal();
 }
 
@@ -232,9 +237,15 @@ function showDialogTabAbout() {
     baseStatsButton.classList.remove('active');
     evolutionButton.classList.remove('active');
 
-    aboutTab.style.display = 'block';
-    baseStatsTab.style.display = 'none';
-    evolutionTab.style.display = 'none';
+    // aboutTab.style.display = 'block';
+    // baseStatsTab.style.display = 'none';
+    // evolutionTab.style.display = 'none';
+
+
+    // Neu:
+    aboutTab.classList.remove('hidden');
+    baseStatsTab.classList.add('hidden');
+    evolutionTab.classList.add('hidden');
 }
 
 
@@ -243,9 +254,15 @@ function showDialogTabBaseStats() {
     baseStatsButton.classList.add('active');
     evolutionButton.classList.remove('active');
 
-    aboutTab.style.display = 'none';
-    baseStatsTab.style.display = 'block';
-    evolutionTab.style.display = 'none';
+    // aboutTab.style.display = 'none';
+    // baseStatsTab.style.display = 'block';
+    // evolutionTab.style.display = 'none';
+
+
+    // Neu:
+    aboutTab.classList.add('hidden');
+    baseStatsTab.classList.remove('hidden');
+    evolutionTab.classList.add('hidden');    
 }
 
 
@@ -254,16 +271,28 @@ function showDialogTabEvolution() {
     baseStatsButton.classList.remove('active');
     evolutionButton.classList.add('active');
 
-    aboutTab.style.display = 'none';
-    baseStatsTab.style.display = 'none';
-    evolutionTab.style.display = 'block';
+    // aboutTab.style.display = 'none';
+    // baseStatsTab.style.display = 'none';
+    // evolutionTab.style.display = 'block';
+
+
+    // Neu:
+    aboutTab.classList.add('hidden');
+    baseStatsTab.classList.add('hidden');
+    evolutionTab.classList.remove('hidden');
 }
 
 
 function closeDialog() {
-    aboutTab.style.display = 'none';
-    baseStatsTab.style.display = 'none';
-    evolutionTab.style.display = 'none';
+    // aboutTab.style.display = 'none';
+    // baseStatsTab.style.display = 'none';
+    // evolutionTab.style.display = 'none';
+
+
+    // Neu:
+    aboutTab.classList.add('hidden');
+    baseStatsTab.classList.add('hidden');
+    evolutionTab.classList.add('hidden');
 
     dialogBox.close();
 }
