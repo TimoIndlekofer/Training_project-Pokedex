@@ -91,9 +91,12 @@
             <main class="dialog-main-container">
                 <!-- Dialog nav -->
                 <nav class="dialog-tab-nav">
-                    <button class="dialog-tab-button" id="dialog-about-button" onclick="showDialogTabAbout()">About</button>
-                    <button class="dialog-tab-button" id="dialog-base-stats-button" onclick="showDialogTabBaseStats()">Base stats</button>
-                    <button class="dialog-tab-button" id="dialog-evolution-button" onclick="showDialogTabEvolution()">Evolution</button>
+                    <button class="dialog-tab-button" id="dialog-about-button"
+                        onclick="showDialogTabAbout()">About</button>
+                    <button class="dialog-tab-button" id="dialog-base-stats-button"
+                        onclick="showDialogTabBaseStats()">Base stats</button>
+                    <button class="dialog-tab-button" id="dialog-evolution-button"
+                        onclick="showDialogTabEvolution()">Evolution</button>
                 </nav>
 
                 <!-- Dialog tab: About -->
@@ -127,14 +130,13 @@
                         <dt>Growth</dt>
                         <dd>Medium slow</dd>
 
-
                         <!-- Section 3: Environment -->
                         <h4>Environment</h4>
                         <dt>Egg groups</dt>
                         <dd>Nr1, Nr2</dd>
 
                         <dt>Habitat</dt>
-                        <dd>Forest</dd> 
+                        <dd>Forest</dd>
                     </dl>
                 </div>
 
@@ -146,51 +148,113 @@
                         <dt>HP</dt>
                         <dd>
                             <span class="dialog-stat-value">80</span>
-                            <div class="dialog-stat-bar-container"><div class="dialog-stat-bar" style="width: 30%"></div></div>
+                            <div class="dialog-stat-bar-container">
+                                <div class="dialog-stat-bar" style="width: 30%"></div>
+                            </div>
                         </dd>
 
                         <dt>Attack</dt>
                         <dd>
                             <span class="dialog-stat-value">35</span>
-                            <div class="dialog-stat-bar-container"><div class="dialog-stat-bar" style="width: 12%"></div></div>
+                            <div class="dialog-stat-bar-container">
+                                <div class="dialog-stat-bar" style="width: 12%"></div>
+                            </div>
                         </dd>
 
                         <dt>Defense</dt>
                         <dd>
                             <span class="dialog-stat-value">40</span>
-                            <div class="dialog-stat-bar-container"><div class="dialog-stat-bar" style="width: 15%"></div></div>
+                            <div class="dialog-stat-bar-container">
+                                <div class="dialog-stat-bar" style="width: 15%"></div>
+                            </div>
                         </dd>
 
                         <dt>Sp. Attack</dt>
                         <dd>
                             <span class="dialog-stat-value">20</span>
-                            <div class="dialog-stat-bar-container"><div class="dialog-stat-bar" style="width: 7%"></div></div>
+                            <div class="dialog-stat-bar-container">
+                                <div class="dialog-stat-bar" style="width: 7%"></div>
+                            </div>
                         </dd>
 
                         <dt>Sp. Defense</dt>
                         <dd>
                             <span class="dialog-stat-value">30</span>
-                            <div class="dialog-stat-bar-container"><div class="dialog-stat-bar" style="width: 10%"></div></div>
+                            <div class="dialog-stat-bar-container">
+                                <div class="dialog-stat-bar" style="width: 10%"></div>
+                            </div>
                         </dd>
 
                         <dt>Speed</dt>
                         <dd>
                             <span class="dialog-stat-value">50</span>
-                            <div class="dialog-stat-bar-container"><div class="dialog-stat-bar" style="width: 20%"></div></div>
+                            <div class="dialog-stat-bar-container">
+                                <div class="dialog-stat-bar" style="width: 20%"></div>
+                            </div>
                         </dd>
 
                         <div class="dialog-stat-line"></div>
                         <dt class="dialog-stat-total-label">Total</dt>
                         <dd>
                             <span class="dialog-stat-total-value">230</span>
-                            <div class="dialog-stat-bar-container"><div class="dialog-stat-bar" style="width: 90%"></div></div>
+                            <div class="dialog-stat-bar-container">
+                                <div class="dialog-stat-bar" style="width: 90%"></div>
+                            </div>
                         </dd>
                     </dl>
                 </div>
 
                 <!-- Dialog tab: Evolution -->
-                 <div class="dialog-tab-evolution-container dialog-tab-content" id="tab-evolution">
+                <div class="dialog-tab-evolution-container dialog-tab-content" id="tab-evolution">
                     <h4>Evolution</h4>
+                    <!-- Evolution stage -->
+                    <div class="dialog-evolution-stage-container">
+                        <div class="dialog-evolution-img">
+                            <img src="./assets/img/placeholder_pokemon_small.png" alt="Pokemon picture">
+                        </div>
+                    </div>
+                    <div class="dialog-evolution-details-container">
+                        <span class="dialog-evolution-id">#1</span>
+                        <span class="dialog-evolution-name">Pokemon Name</span>
+                    </div>
+                    <!-- Arrow -->
+                    <div class="dialog-evolution-arrow-container">
+                        <!-- <span class="dialog-evolution-arrow-icon">&raquo;</span> -->
+                        <span class="dialog-evolution-arrow-icon">&darr;</span>
+                        <span class="dialog-evolution-req">Level X</span>
+                    </div>
+                    <!-- Evolution stage -->
+                    <div class="dialog-evolution-stage-container">
+                        <div class="dialog-evolution-img">
+                            <img src="./assets/img/placeholder_pokemon_small.png" alt="Pokemon picture">
+                        </div>
+                    </div>
+                    <div class="dialog-evolution-details-container">
+                        <span class="dialog-evolution-id">#2</span>
+                        <span class="dialog-evolution-name">Pokemon Name</span>
+                    </div>
+                    <!-- Arrow -->
+                    <div class="dialog-evolution-arrow-container">
+                        <!-- <span class="dialog-evolution-arrow-icon">&raquo;</span> -->
+                        <span class="dialog-evolution-arrow-icon">&darr;</span>
+                        <span class="dialog-evolution-req">Level X</span>
+                    </div>
+                    <!-- Evolution stage -->
+                    <div class="dialog-evolution-stage-container">
+                        <div class="dialog-evolution-img">
+                            <img src="./assets/img/placeholder_pokemon_small.png" alt="Pokemon picture">
+                        </div>
+                    </div>
+                    <div class="dialog-evolution-details-container">
+                        <span class="dialog-evolution-id">#3</span>
+                        <span class="dialog-evolution-name">Pokemon Name</span>
+                    </div>
+
+
+
+
+
+                    <!-- <h4>Evolution</h4>
 
                     <div class="dialog-tab-evolution-chain">
                         <div>
@@ -215,8 +279,10 @@
                             <img src="./assets/img/placeholder_pokemon_small.png" alt="Pokemon picture">
                             <span>Name Pokemon</span>
                         </div>
-                    </div>
-                 </div>
+                    </div> -->
+
+
+                </div>
             </main>
 
             <!-- Dialog footer -->

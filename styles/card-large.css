@@ -460,6 +460,172 @@
 }
 
 
+.dialog-tab-evolution-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    color: #F5F6F8;
+    
+    gap: 12px;
+}
+
+
+.dialog-evolution-stage-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: transparent;
+
+    border: none;
+    border-radius: 0;
+
+    box-shadow: none;
+
+    width: 100%;
+    max-width: 280px;
+}
+
+
+.dialog-evolution-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(255, 255, 255, 0.04);
+
+    border: 1px solid #558C33;
+    border-radius: 50%;
+
+    width: 85px;
+    height: 85px;
+    margin: 0 auto 2px auto;
+}
+
+
+.dialog-evolution-img img {
+    object-fit: contain;
+
+    width: 70px;
+    height: 70px;
+}
+
+
+.dialog-evolution-details-container {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.dialog-evolution-id {
+    display: flex;
+    justify-content: center;
+
+    color: #A0AEC0;
+    font-size: 0.85rem;
+}
+
+
+.dialog-evolution-name {
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+
+.dialog-evolution-arrow-container {
+    /* display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    color: #A0AEC0;
+
+    width: 100%;
+    margin: 10px 0; */
+
+
+
+
+    /* Neue Variante: */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+
+    color: #A0AEC0;
+
+    width: 100%;
+    margin: 10px 0;
+}
+
+
+.dialog-evolution-arrow-icon {
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 5rem;
+    line-height: 0.8; */
+    
+
+
+    /* Neue Variante: */
+    font-size: 5rem;
+    line-height: 0.8;
+
+    justify-self: end;
+    margin-right: -15px;
+
+    margin-top: -10px;
+    margin-bottom: 8px;
+}
+
+
+.dialog-evolution-req {
+    /* background-color: rgba(255, 255, 255, 0.05);
+
+    color: #558C33;
+    font-size: 0.75rem;
+
+    border-radius: 8px;
+
+    white-space: nowrap;
+
+    padding: 4px 10px; */
+
+
+
+    /* Neue Variante: */
+    background-color: rgba(255, 255, 255, 0.05);
+
+    color: #558C33;
+    font-size: 0.75rem;
+
+    border-radius: 8px;
+
+    white-space: nowrap;
+
+    justify-self: start;
+    padding: 4px 10px;
+    margin-left: 15px;
+    margin-bottom: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Dialog footer */
 
 .dialog-footer {
