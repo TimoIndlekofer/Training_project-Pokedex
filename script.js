@@ -23,6 +23,9 @@ let allPokemons = [];
 let offset = 20;
 
 
+let allPokemonDetails = [];
+
+
 // Functions
 
 function init() {
@@ -60,6 +63,7 @@ async function fetchPokemonDetails(pokemonURL) {
         const pokemonDetails = await responseDetails.json();
         console.log(pokemonDetails);
         // pokemonCardsData += getPokemonTemplate(pokemonDetails);
+        allPokemonDetails.push(pokemonDetails);
         return getPokemonTemplate(pokemonDetails);
         // return pokemonDetails;
     } catch (error) {
@@ -295,4 +299,30 @@ function closeDialog() {
     evolutionTab.classList.add('hidden');
 
     dialogBox.close();
+}
+
+
+
+
+console.log(allPokemons);
+console.log(allPokemonDetails);
+
+
+
+// Test für Dialog - Alles OK:
+
+async function renderPokemonInDialog(id) {
+    showPokemonDetailsInDialog();
+    renderDialogHeader(id);
+}
+
+
+function renderDialogHeader(id) {
+    const singlePokemonID = allPokemonDetails.find(pokemon => pokemon.id === id);
+
+    if (singlePokemonID) {
+        document.getElementById('header-id').textContent = "#" + singlePokemonID.id;
+        document.getElementById('header-name').textContent = singlePokemonID.name;
+        document.getElementById('header-img').src = singlePokemonID.sprites.other.home.front_default;
+    }
 }
