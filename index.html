@@ -70,18 +70,18 @@
 
     <!-- Dialog for Pokemon details -->
     <dialog class="dialog-card-large" id="dialog-pokemon-details">
-        <div class="dialog-wrapper">
+        <div class="dialog-wrapper" id="wrapper">
             <!-- Dialog header -->
-            <header class="dialog-header-container">
+            <header class="dialog-header-container" id="header-container">
                 <div class="dialog-header-top">
                     <span class="dialog-header-id" id="header-id">#1</span>
-                    <button class="dialog-header-close-button" onclick="closeDialog()">X</button>
+                    <button class="dialog-header-close-button" id="header-close-button" onclick="closeDialog()">X</button>
                 </div>
                 <div class="dialog-header-bottom">
                     <h3 id="header-name">Pokemon name</h3>
                     <div class="dialog-header-bottom-badges-container">
-                        <span class="type-badge">Badge 1</span>
-                        <span class="type-badge">Badge 2</span>
+                        <span class="type-badge" id="header-badge1">Badge 1</span>
+                        <span class="type-badge" id="header-badge2">Badge 2</span>
                     </div>
                     <img src="./assets/img/placeholder_pokemon_small.png" alt="Pokemon picture" class="dialog-img" id="header-img">
                 </div>
@@ -105,38 +105,36 @@
                     <dl class="dialog-about-list">
                         <h4>Basic data</h4>
                         <dt>Species</dt>
-                        <dd>Seed Pokemon</dd>
+                        <dd data-pokemon="species"></dd>
 
                         <dt>Height</dt>
-                        <dd>0,7 m</dd>
+                        <dd data-pokemon="height"></dd>
 
                         <dt>Weight</dt>
-                        <dd>10,0 kg</dd>
+                        <dd data-pokemon="weight"></dd>
 
                         <dt>Abilities</dt>
-                        <dd>
-                            Nr1
-                            <span class="hidden-ability">Test</span>
+                        <dd data-pokemon="abilities"><span class="hidden-ability">Test</span>
                         </dd>
 
                         <!-- Section 2: Training -->
                         <h4>Training</h4>
                         <dt>Catch rate</dt>
-                        <dd>45 <small>(5,0 %)</small></dd>
+                        <dd data-pokemon="catch-rate"></dd>
 
-                        <dt>Base experience</dt>
-                        <dd>50</dd>
+                        <dt>Base exp.</dt>
+                        <dd data-pokemon="base-exp"></dd>
 
                         <dt>Growth</dt>
-                        <dd>Medium slow</dd>
+                        <dd data-pokemon="growth"></dd>
 
                         <!-- Section 3: Environment -->
                         <h4>Environment</h4>
                         <dt>Egg groups</dt>
-                        <dd>Nr1, Nr2</dd>
+                        <dd data-pokemon="egg-groups"></dd>
 
                         <dt>Habitat</dt>
-                        <dd>Forest</dd>
+                        <dd data-pokemon="habitat"></dd>
                     </dl>
                 </div>
 
