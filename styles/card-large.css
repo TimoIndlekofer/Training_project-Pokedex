@@ -1,18 +1,28 @@
 /* ##### CSS file for large Pokemon card in dialog window ##### */
 
+/* Mobile version (min-width: 320px) */
+
 /* Dialog window */
 .dialog-card-large {
+    position: fixed;
+    top: 0;
+    left: 0;
+
     background-color: #11141A;
 
     color: #F5F6F8;
 
     border: none;
-    border-radius: 20px;
+    /* border-radius: 20px;
 
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5); */
 
-    width: 90%;
-    max-height: 90vh;
+    /* width: 90%; */
+    width: 100%;
+    max-width: 100vw;
+    height: 100%;
+    /* max-height: 90vh; */
+    max-height: 100vh;
     padding: 0;
 }
 
@@ -40,7 +50,9 @@
     /* Beispiel: */
     /* background-color: #558C33; */
 
-    max-height: 90vh;
+    /* max-height: 90vh; */
+
+    max-height: 100vh;
 }
 
 
@@ -152,6 +164,9 @@
 /* Dialog main */
 
 .dialog-main-container {
+    display: flex;
+    flex-direction: column;
+
     overflow-y: auto;
     flex-grow: 1;
 
@@ -159,6 +174,7 @@
     border-top-right-radius: 20px;
 
     /* padding: 16px; */
+    height: 100vh;
     padding: 12px;
 }
 
@@ -311,6 +327,8 @@
     line-height: 1.6;
 
     overflow-y: auto;
+
+    flex: 1;
 
     scrollbar-width: thin;
     scrollbar-color: #2D3748 #11141A;
@@ -631,20 +649,6 @@
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* Dialog footer */
 
 .dialog-footer {
@@ -656,9 +660,12 @@
 
     border: none;
 
+    flex-shrink: 0;
+
     gap: 16px;
 
     padding: 12px 16px;
+    margin-top: 0;
 }
 
 
@@ -722,4 +729,64 @@
     box-shadow: 
         inset 0 0 5px 2px rgba(255, 255, 255, 0.15),
         inset 0 3px 8px rgba(255, 255, 255, 0.15);
+}
+
+
+
+
+
+/* Tablet Version (min-width: 768px) */
+
+@media (min-width: 768px) {
+
+    .dialog-card-large {
+        top: 50%;
+        left: 50%;
+        
+        transform: translate(-50%, -50%);
+
+        overflow: hidden;
+
+        border-radius: 20px;
+
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+
+        width: 90%;
+        max-width: 500px;
+        height: 85vh;
+        max-height: 85vh;
+    }
+
+
+    .dialog-wrapper {
+        display: flex;
+        flex-direction: column;
+
+        width: 100%;
+        height: 100%;
+        
+        overflow: hidden;
+    }
+
+
+    .dialog-header-container {
+        flex-shrink: 0;
+    }
+
+
+    .dialog-main-container {
+        overflow-y: auto;
+        flex-grow: 1;
+
+        height: 100%;
+    }
+
+
+    .dialog-footer {
+        flex-shrink: 0;
+
+        margin-top: auto;
+
+
+    }
 }

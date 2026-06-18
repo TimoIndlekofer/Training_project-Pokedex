@@ -315,6 +315,7 @@ async function renderPokemonInDialog(id) {
     showPokemonDetailsInDialog();
     renderDialogHeader(id);
     renderDialogMainTabAbout(id);
+    renderDialogMainTabBaseStats(id);
 }
 
 
@@ -344,11 +345,11 @@ function addBackgroundInDialogHeader(singlePokemonID) {
     const typeName = singlePokemonID.types[0].type.name;
 
     allTypes.forEach(type => {
-        document.getElementById('wrapper').classList.remove('bg-' + type);
+        // document.getElementById('wrapper').classList.remove('bg-' + type);
         document.getElementById('header-container').classList.remove('bg-' + type);
         document.getElementById('header-close-button').classList.remove('bg-' + type);
     });
-    document.getElementById('wrapper').classList.add('bg-' + typeName);
+    // document.getElementById('wrapper').classList.add('bg-' + typeName);
     document.getElementById('header-container').classList.add('bg-' + typeName);
     document.getElementById('header-close-button').classList.add('bg-' + typeName);
 }
@@ -398,9 +399,7 @@ function getPokemonEggGroups(trainingData) {
 }
 
 
-async function renderDialogMainTabAbout(id) {
-    const singlePokemonID = allPokemonDetails.find(pokemon => pokemon.id === id);
-
+async function addPokemonBasicData(singlePokemonID) {
     const speciesElement = aboutTab.querySelector('[data-pokemon="species"]');
     speciesElement.textContent = '';
     
@@ -413,13 +412,17 @@ async function renderDialogMainTabAbout(id) {
     
     const ability = getPokemonAbilities(singlePokemonID.abilities);
     aboutTab.querySelector('[data-pokemon="abilities"]').textContent = ability;
+}
 
-    const trainingData = allPokemonSpeciesDetails.find(pokemon => pokemon.id === id);
+
+function addPokemonTrainingData(trainingData, singlePokemonID) {
     aboutTab.querySelector('[data-pokemon="catch-rate"]').textContent = trainingData.capture_rate;
-    
     aboutTab.querySelector('[data-pokemon="base-exp"]').textContent = singlePokemonID.base_experience + " EP";
     aboutTab.querySelector('[data-pokemon="growth"]').textContent = trainingData.growth_rate.name.charAt(0).toUpperCase() + trainingData.growth_rate.name.slice(1);
+}
 
+
+function addPokemonEnvironmentData(trainingData) {
     const eggGroup = getPokemonEggGroups(trainingData);
     aboutTab.querySelector('[data-pokemon="egg-groups"]').textContent = eggGroup;
 
@@ -429,4 +432,59 @@ async function renderDialogMainTabAbout(id) {
     } else {
         aboutTab.querySelector('[data-pokemon="habitat"]').textContent = "Unknown";
     }
+}
+
+
+async function renderDialogMainTabAbout(id) {
+    const singlePokemonID = allPokemonDetails.find(pokemon => pokemon.id === id);
+
+    await addPokemonBasicData(singlePokemonID);
+
+    const trainingData = allPokemonSpeciesDetails.find(pokemon => pokemon.id === id);
+    
+    addPokemonTrainingData(trainingData, singlePokemonID);
+    addPokemonEnvironmentData(trainingData);
+}
+
+
+function addPokemonBaseStatData(singlePokemonID) {
+    baseStatsTab.querySelector('[data-pokemon="hp"]').textContent = singlePokemonID.stats[0].base_stat;
+    baseStatsTab.querySelector('[data-pokemon="attack"]').textContent = singlePokemonID.stats[1].base_stat;
+    baseStatsTab.querySelector('[data-pokemon="defense"]').textContent = singlePokemonID.stats[2].base_stat;
+    baseStatsTab.querySelector('[data-pokemon="sp-attack"]').textContent = singlePokemonID.stats[3].base_stat;
+    baseStatsTab.querySelector('[data-pokemon="sp-defense"]').textContent = singlePokemonID.stats[4].base_stat;
+    baseStatsTab.querySelector('[data-pokemon="speed"]').textContent = singlePokemonID.stats[5].base_stat;
+}
+
+
+function calculateBaseStatTotalValue(singlePokemonID) {
+    let totalValue = 0;
+    
+    for (let index = 0; index < singlePokemonID.stats.length; index++) {
+        let value = singlePokemonID.stats[index].base_stat;
+
+        totalValue += value;
+    }
+    baseStatsTab.querySelector('[data-pokemon="total"]').textContent = totalValue;
+}
+
+
+function calculateBaseStatBars(singlePokemonID) {
+    const maxValue = 255;
+
+    baseStatsTab.querySelector('[data-pokemon="hp-bar"]').style.width = ((singlePokemonID.stats[0].base_stat / maxValue) * 100) + '%';
+    baseStatsTab.querySelector('[data-pokemon="attack-bar"]').style.width = ((singlePokemonID.stats[1].base_stat / maxValue) * 100) + '%';
+    baseStatsTab.querySelector('[data-pokemon="defense-bar"]').style.width = ((singlePokemonID.stats[2].base_stat / maxValue) * 100) + '%';
+    baseStatsTab.querySelector('[data-pokemon="sp-attack-bar"]').style.width = ((singlePokemonID.stats[3].base_stat / maxValue) * 100) + '%';
+    baseStatsTab.querySelector('[data-pokemon="sp-defense-bar"]').style.width = ((singlePokemonID.stats[4].base_stat / maxValue) * 100) + '%';
+    baseStatsTab.querySelector('[data-pokemon="speed-bar"]').style.width = ((singlePokemonID.stats[5].base_stat / maxValue) * 100) + '%';
+}
+
+
+async function renderDialogMainTabBaseStats(id) {
+    const singlePokemonID = allPokemonDetails.find(pokemon => pokemon.id === id);
+
+    addPokemonBaseStatData(singlePokemonID);
+    calculateBaseStatTotalValue(singlePokemonID);
+    calculateBaseStatBars(singlePokemonID);
 }
