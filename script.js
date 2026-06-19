@@ -226,7 +226,6 @@ function showPokemonDetailsInDialog() {
     aboutButton.classList.add('active');
     baseStatsButton.classList.remove('active');
     evolutionButton.classList.remove('active');
-    // aboutTab.style.display = 'block';
 
     aboutTab.classList.remove('hidden');
     baseStatsTab.classList.add('hidden');
@@ -451,8 +450,8 @@ function addPokemonBaseStatData(singlePokemonID) {
     baseStatsTab.querySelector('[data-pokemon="hp"]').textContent = singlePokemonID.stats[0].base_stat;
     baseStatsTab.querySelector('[data-pokemon="attack"]').textContent = singlePokemonID.stats[1].base_stat;
     baseStatsTab.querySelector('[data-pokemon="defense"]').textContent = singlePokemonID.stats[2].base_stat;
-    baseStatsTab.querySelector('[data-pokemon="sp-attack"]').textContent = singlePokemonID.stats[3].base_stat;
-    baseStatsTab.querySelector('[data-pokemon="sp-defense"]').textContent = singlePokemonID.stats[4].base_stat;
+    baseStatsTab.querySelector('[data-pokemon="special-attack"]').textContent = singlePokemonID.stats[3].base_stat;
+    baseStatsTab.querySelector('[data-pokemon="special-defense"]').textContent = singlePokemonID.stats[4].base_stat;
     baseStatsTab.querySelector('[data-pokemon="speed"]').textContent = singlePokemonID.stats[5].base_stat;
 }
 
@@ -475,9 +474,25 @@ function calculateBaseStatBars(singlePokemonID) {
     baseStatsTab.querySelector('[data-pokemon="hp-bar"]').style.width = ((singlePokemonID.stats[0].base_stat / maxValue) * 100) + '%';
     baseStatsTab.querySelector('[data-pokemon="attack-bar"]').style.width = ((singlePokemonID.stats[1].base_stat / maxValue) * 100) + '%';
     baseStatsTab.querySelector('[data-pokemon="defense-bar"]').style.width = ((singlePokemonID.stats[2].base_stat / maxValue) * 100) + '%';
-    baseStatsTab.querySelector('[data-pokemon="sp-attack-bar"]').style.width = ((singlePokemonID.stats[3].base_stat / maxValue) * 100) + '%';
-    baseStatsTab.querySelector('[data-pokemon="sp-defense-bar"]').style.width = ((singlePokemonID.stats[4].base_stat / maxValue) * 100) + '%';
+    baseStatsTab.querySelector('[data-pokemon="special-attack-bar"]').style.width = ((singlePokemonID.stats[3].base_stat / maxValue) * 100) + '%';
+    baseStatsTab.querySelector('[data-pokemon="special-defense-bar"]').style.width = ((singlePokemonID.stats[4].base_stat / maxValue) * 100) + '%';
     baseStatsTab.querySelector('[data-pokemon="speed-bar"]').style.width = ((singlePokemonID.stats[5].base_stat / maxValue) * 100) + '%';
+}
+
+
+function addBackgroundToDialogStatBars(singlePokemonID) {
+    const typeName = singlePokemonID.types[0].type.name;
+    const currentTypeClass = `bg-${typeName}`;
+
+    singlePokemonID.stats.forEach(data => {
+        const statName = data.stat.name;
+        const statBar = document.querySelector(`.dialog-stat-bar[data-pokemon="${statName}-bar"]`)
+
+        if(statBar) {
+            statBar.className = 'dialog-stat-bar';
+            statBar.classList.add(currentTypeClass);
+        }
+    });
 }
 
 
@@ -487,4 +502,5 @@ async function renderDialogMainTabBaseStats(id) {
     addPokemonBaseStatData(singlePokemonID);
     calculateBaseStatTotalValue(singlePokemonID);
     calculateBaseStatBars(singlePokemonID);
+    addBackgroundToDialogStatBars(singlePokemonID);
 }

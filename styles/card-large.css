@@ -309,7 +309,7 @@
 .dialog-tab-button.active::after {
     position: absolute;
 
-    background-color: #558C33;
+    background-color: #FFFFFF;
     border-radius: 3px 3px 0 0;
 
     content: "";
@@ -436,8 +436,6 @@
 
 
 .dialog-stat-bar {
-    background-color: green;
-
     border-radius: 10px;
 
     transition: width 0.3s ease-in-out;
