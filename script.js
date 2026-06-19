@@ -22,6 +22,7 @@ let pokemonCardsContainer = document.getElementById('pokemon-cards-container');
 let allPokemons = [];
 let allPokemonDetails = [];
 let allPokemonSpeciesDetails = [];
+let pokemonEvolutionChain = [];
 let offset = 20;
 
 
@@ -313,8 +314,9 @@ console.log(allPokemonDetails);
 async function renderPokemonInDialog(id) {
     showPokemonDetailsInDialog();
     renderDialogHeader(id);
-    renderDialogMainTabAbout(id);
+    await renderDialogMainTabAbout(id);
     renderDialogMainTabBaseStats(id);
+    renderDialogMainTabEvolution(id);
 }
 
 
@@ -503,4 +505,25 @@ async function renderDialogMainTabBaseStats(id) {
     calculateBaseStatTotalValue(singlePokemonID);
     calculateBaseStatBars(singlePokemonID);
     addBackgroundToDialogStatBars(singlePokemonID);
+}
+
+
+async function fetchPokemonEvolutionChain(id) {
+    const singlePokemonID = allPokemonSpeciesDetails.find(pokemon => pokemon.id === id);
+    const evolutionChainURL = singlePokemonID.evolution_chain.url;
+
+    try {
+        const responseDetails = await fetch(evolutionChainURL);
+        const pokemonEvolutionDetails = await responseDetails.json();
+
+        pokemonEvolutionChain.push(pokemonEvolutionDetails);
+        // return pokemonEvolutionChain;
+    } catch (error) {
+        console.log('Fehler beim Laden der Daten:', error);
+    }
+}
+
+
+async function renderDialogMainTabEvolution(id) {
+    fetchPokemonEvolutionChain(id);
 }
