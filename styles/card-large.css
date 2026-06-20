@@ -542,8 +542,11 @@
 .dialog-evolution-img img {
     object-fit: contain;
 
-    width: 70px;
-    height: 70px;
+    /* width: 70px;
+    height: 70px; */
+
+    width: 100px;
+    height: 100px;
 }
 
 
@@ -565,6 +568,7 @@
 .dialog-evolution-name {
     font-size: 0.85rem;
     font-weight: 700;
+    text-transform: capitalize;
 }
 
 
@@ -616,21 +620,7 @@
 }
 
 
-.dialog-evolution-req {
-    /* background-color: rgba(255, 255, 255, 0.05);
-
-    color: #558C33;
-    font-size: 0.75rem;
-
-    border-radius: 8px;
-
-    white-space: nowrap;
-
-    padding: 4px 10px; */
-
-
-
-    /* Neue Variante: */
+/* .dialog-evolution-req {
     background-color: rgba(255, 255, 255, 0.05);
 
     color: #558C33;
@@ -644,7 +634,7 @@
     padding: 4px 10px;
     margin-left: 15px;
     margin-bottom: 20px;
-}
+} */
 
 
 /* Dialog footer */

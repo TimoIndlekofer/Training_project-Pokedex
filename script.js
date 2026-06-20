@@ -524,6 +524,56 @@ async function fetchPokemonEvolutionChain(id) {
 }
 
 
+function addPokemonDataToEvolutionChain(allPokemonsFromChain) {
+    const evolutionTabHeadline = '<h4>Evolution</h4>';
+    let pokemonChain = [];
+
+    evolutionTab.innerHTML = '';
+
+    // allPokemonsFromChain.forEach(pokemonName => {
+    //     const allPokemonsFromChainFound = allPokemonDetails.find(allPokemon => allPokemon.name === pokemonName);
+    //     pokemonChain += getEvolutionChainTemplate(allPokemonsFromChainFound);
+    //     evolutionTab.innerHTML = pokemonChain;
+    // });
+
+    for (let index = 0; index < allPokemonsFromChain.length; index++) {
+        const pokemonNames = allPokemonsFromChain[index];
+        const allPokemonsFromChainFound = allPokemonDetails.find(allPokemon => allPokemon.name === pokemonNames);
+        const lastPokemon = (index === allPokemonsFromChain.length -1);
+        pokemonChain += getEvolutionChainTemplate(allPokemonsFromChainFound, lastPokemon);
+        
+    }
+    evolutionTab.innerHTML = evolutionTabHeadline + pokemonChain;
+}
+
+
+function checkEvolutionChain(id) {
+    let allPokemonsFromChain = [];
+
+    const singlePokemonID = allPokemonSpeciesDetails.find(pokemon => pokemon.id === id);
+    
+    const evolutionChainURLParts = singlePokemonID.evolution_chain.url.split('/').filter(part => part !== "");
+    const filterEvolutionChainID = parseInt(evolutionChainURLParts[evolutionChainURLParts.length -1]);
+
+    const findEvolutionChain = pokemonEvolutionChain.find(evolutionChain => evolutionChain.id === filterEvolutionChainID);
+
+    const basicPokemon = findEvolutionChain.chain;
+    allPokemonsFromChain.push(basicPokemon.species.name);
+
+    if (basicPokemon.evolves_to && basicPokemon.evolves_to.length > 0) {
+        basicPokemon.evolves_to.forEach(firstEvolution => {
+            allPokemonsFromChain.push(firstEvolution.species.name);
+
+            if (firstEvolution.evolves_to.forEach(secondEvolution => {
+                allPokemonsFromChain.push(secondEvolution.species.name);
+            }));
+        });
+    }
+    addPokemonDataToEvolutionChain(allPokemonsFromChain);
+}
+
+
 async function renderDialogMainTabEvolution(id) {
-    fetchPokemonEvolutionChain(id);
+    await fetchPokemonEvolutionChain(id);
+    checkEvolutionChain(id);
 }

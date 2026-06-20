@@ -53,3 +53,50 @@ function getPokemonTemplate(pokemonDetails) {
                 </span>
             </button>`
 }
+
+
+
+
+// Test für Evolution chain - OK:
+
+// function getEvolutionChainTemplate(allPokemonsFromChainFound) {
+
+//     const arrow = lastPokemon ? '' : `<div class="dialog-evolution-arrow-container">
+//                         <span class="dialog-evolution-arrow-icon">&darr;</span>
+//                     </div>`
+
+//     return `<!-- Evolution stage -->
+//                     <div class="dialog-evolution-stage-container">
+//                         <div class="dialog-evolution-img">
+//                             <img src="${allPokemonsFromChainFound.sprites.other.home.front_default}" alt="Pokemon picture">
+//                         </div>
+//                     </div>
+//                     <div class="dialog-evolution-details-container">
+//                         <span class="dialog-evolution-id">#${allPokemonsFromChainFound.id}</span>
+//                         <span class="dialog-evolution-name">${allPokemonsFromChainFound.name}</span>
+//                     </div>
+//                     <!-- Arrow -->
+//                     ${arrow}`
+// }
+
+
+
+// TEST- OK:
+function getEvolutionChainTemplate(allPokemonsFromChainFound, lastPokemon) {
+    const arrow = lastPokemon ? '' : `<div class="dialog-evolution-arrow-container">
+                        <span class="dialog-evolution-arrow-icon">&darr;</span>
+                    </div>`
+
+    return `<!-- Evolution stage -->
+                    <div class="dialog-evolution-stage-container">
+                        <div class="dialog-evolution-img">
+                            <img src="${allPokemonsFromChainFound.sprites.other.home.front_default}" alt="Pokemon picture">
+                        </div>
+                    </div>
+                    <div class="dialog-evolution-details-container">
+                        <span class="dialog-evolution-id">#${allPokemonsFromChainFound.id}</span>
+                        <span class="dialog-evolution-name">${allPokemonsFromChainFound.name}</span>
+                    </div>
+                    <!-- Arrow -->
+                    ${arrow}`
+}
