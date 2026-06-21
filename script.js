@@ -16,6 +16,8 @@ const evolutionButton = document.getElementById('dialog-evolution-button');
 const aboutTab = document.getElementById('tab-about');
 const baseStatsTab = document.getElementById('tab-base-stats');
 const evolutionTab = document.getElementById('tab-evolution');
+const backButton = document.getElementById('dialog-back-button');
+const nextButton = document.getElementById('dialog-next-button');
 
 let pokemonCardsContainer = document.getElementById('pokemon-cards-container');
 
@@ -63,8 +65,12 @@ async function fetchPokemonDetails(pokemonURL) {
         const responseDetails = await fetch(pokemonURL);
         const pokemonDetails = await responseDetails.json();
         console.log(pokemonDetails);
-        // pokemonCardsData += getPokemonTemplate(pokemonDetails);
-        allPokemonDetails.push(pokemonDetails);
+
+        const checkPokemonID = allPokemonDetails.some(pokemon => pokemon.id === pokemonDetails.id);
+        if (!checkPokemonID) {
+            allPokemonDetails.push(pokemonDetails);
+        }
+        // allPokemonDetails.push(pokemonDetails);
         return getPokemonTemplate(pokemonDetails);
         // return pokemonDetails;
     } catch (error) {
@@ -307,16 +313,21 @@ function closeDialog() {
 console.log(allPokemons);
 console.log(allPokemonDetails);
 
-
+let currentPokemonID = 0;
 
 // Test für Dialog - Alles OK:
 
-async function renderPokemonInDialog(id) {
+async function renderPokemonInDialog(id) { 
+    currentPokemonID = Number(id);
+    
+
     showPokemonDetailsInDialog();
     renderDialogHeader(id);
     await renderDialogMainTabAbout(id);
     renderDialogMainTabBaseStats(id);
     renderDialogMainTabEvolution(id);
+    checkBackButtonInDialog();
+    checkNextButtonInDialog();
 }
 
 
@@ -524,24 +535,30 @@ async function fetchPokemonEvolutionChain(id) {
 }
 
 
+function searchAllPokemonsInEvolutionChain(basicPokemon, allPokemonsFromChain) {
+    if (basicPokemon.evolves_to && basicPokemon.evolves_to.length > 0) {
+        basicPokemon.evolves_to.forEach(firstEvolution => {
+            allPokemonsFromChain.push(firstEvolution.species.name);
+
+            if (firstEvolution.evolves_to.forEach(secondEvolution => {
+                allPokemonsFromChain.push(secondEvolution.species.name);
+            }));
+        });
+    }
+}
+
+
 function addPokemonDataToEvolutionChain(allPokemonsFromChain) {
     const evolutionTabHeadline = '<h4>Evolution</h4>';
     let pokemonChain = [];
 
     evolutionTab.innerHTML = '';
 
-    // allPokemonsFromChain.forEach(pokemonName => {
-    //     const allPokemonsFromChainFound = allPokemonDetails.find(allPokemon => allPokemon.name === pokemonName);
-    //     pokemonChain += getEvolutionChainTemplate(allPokemonsFromChainFound);
-    //     evolutionTab.innerHTML = pokemonChain;
-    // });
-
     for (let index = 0; index < allPokemonsFromChain.length; index++) {
         const pokemonNames = allPokemonsFromChain[index];
         const allPokemonsFromChainFound = allPokemonDetails.find(allPokemon => allPokemon.name === pokemonNames);
         const lastPokemon = (index === allPokemonsFromChain.length -1);
         pokemonChain += getEvolutionChainTemplate(allPokemonsFromChainFound, lastPokemon);
-        
     }
     evolutionTab.innerHTML = evolutionTabHeadline + pokemonChain;
 }
@@ -560,15 +577,7 @@ function checkEvolutionChain(id) {
     const basicPokemon = findEvolutionChain.chain;
     allPokemonsFromChain.push(basicPokemon.species.name);
 
-    if (basicPokemon.evolves_to && basicPokemon.evolves_to.length > 0) {
-        basicPokemon.evolves_to.forEach(firstEvolution => {
-            allPokemonsFromChain.push(firstEvolution.species.name);
-
-            if (firstEvolution.evolves_to.forEach(secondEvolution => {
-                allPokemonsFromChain.push(secondEvolution.species.name);
-            }));
-        });
-    }
+    searchAllPokemonsInEvolutionChain(basicPokemon, allPokemonsFromChain);
     addPokemonDataToEvolutionChain(allPokemonsFromChain);
 }
 
@@ -576,4 +585,50 @@ function checkEvolutionChain(id) {
 async function renderDialogMainTabEvolution(id) {
     await fetchPokemonEvolutionChain(id);
     checkEvolutionChain(id);
+}
+
+
+function checkBackButtonInDialog() {
+    const singlePokemonID = allPokemonDetails.findIndex(pokemon => Number(pokemon.id) === Number(currentPokemonID));
+
+    if (singlePokemonID === 0) {
+        backButton.disabled = true;
+        backButton.classList.add('deactivate');
+    } else {
+        backButton.disabled = false;
+        backButton.classList.remove('deactivate');        
+    }
+}
+
+
+function checkNextButtonInDialog() {
+    const singlePokemonID = allPokemonDetails.findIndex(pokemon => Number(pokemon.id) === Number(currentPokemonID));
+
+    if (singlePokemonID === allPokemonDetails.length - 1 || singlePokemonID === -1) {
+        nextButton.disabled = true;
+        nextButton.classList.add('deactivate');
+    } else {
+        nextButton.disabled = false;
+        nextButton.classList.remove('deactivate');
+    }
+}
+
+
+function backButtonInDialog() {
+    const singlePokemonID = allPokemonDetails.findIndex(pokemon => Number(pokemon.id) === Number(currentPokemonID));
+
+    if (singlePokemonID > 0) {
+        const previousPokemonID = allPokemonDetails[singlePokemonID - 1];
+        renderPokemonInDialog(previousPokemonID.id);
+    }
+}
+
+
+function nextButtonInDialog() {
+    const singlePokemonID = allPokemonDetails.findIndex(pokemon => Number(pokemon.id) === Number(currentPokemonID));
+
+    if (singlePokemonID !== -1 && singlePokemonID < allPokemonDetails.length - 1) {
+        const nextPokemonID = allPokemonDetails[singlePokemonID + 1];
+        renderPokemonInDialog(nextPokemonID.id);
+    }
 }

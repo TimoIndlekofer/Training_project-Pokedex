@@ -720,6 +720,21 @@
 }
 
 
+.dialog-nav-button.deactivate {
+    background-color: rgba(40, 45, 55, 0.3);
+
+    color: #737373;
+
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    
+    cursor: not-allowed;
+
+    box-shadow: none;
+
+    transform: none;
+}
+
+
 
 
 

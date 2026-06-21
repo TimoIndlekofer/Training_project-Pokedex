@@ -253,11 +253,10 @@
 
             <!-- Dialog footer -->
             <footer class="dialog-footer">
-                <button class="dialog-nav-button"><span>&laquo;</span> Back</button>
-                <button class="dialog-nav-button">Next <span>&raquo;</span></button>
+                <button class="dialog-nav-button" id="dialog-back-button" onclick="backButtonInDialog()" disabled><span>&laquo;</span> Back</button>
+                <button class="dialog-nav-button" id="dialog-next-button" onclick="nextButtonInDialog()">Next <span>&raquo;</span></button>
             </footer>
         </div>
-
     </dialog>
 
     <!-- JavaScript files -->
