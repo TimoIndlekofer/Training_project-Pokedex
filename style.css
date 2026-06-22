@@ -348,14 +348,55 @@
 }
 
 
+/* Footer */
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 10px;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 10px;
+}
 
 
 
-/* ##### Tabler Version (min-width: 768px */
+
+
+/* ##### Tabler Version (min-width: 768px) ##### */
 
 @media (min-width: 768px) {
+
+    /* Header */
 
     .header-search-bar::placeholder {
         font-size: 1rem;
     }
+
+
+    /* Footer */
+
+    .footer-container {
+        flex-direction: row;
+        justify-content: space-between;
+
+        max-width: 1440px;
+        padding: 16px;
+        margin: 0 auto;
+    }
+
+
+    .footer-links {
+        flex-direction: row;
+        
+        gap: 24px;
+    }
+
 }

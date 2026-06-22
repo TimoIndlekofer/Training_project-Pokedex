@@ -758,6 +758,9 @@
         max-width: 500px;
         height: 85vh;
         max-height: 85vh;
+
+        /* Vorschlag: */
+        /* max-width: 750px; */
     }
 
 

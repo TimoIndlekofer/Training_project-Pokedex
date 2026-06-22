@@ -55,16 +55,22 @@
 
         <!-- Load more Pokemons button -->
         <div class="button-load-more-container">
-            <button class="button-load-more" id="load-more-pokemons" data-id="load-more-button" onclick="fetchMorePokemons()">Load more Pokemon</button>
+            <button class="button-load-more" id="load-more-pokemons" data-id="load-more-button"
+                onclick="fetchMorePokemons()">Load more Pokemon</button>
         </div>
     </main>
 
     <!-- Footer -->
     <footer>
-        <p>Erstellt: Timo (Juni 2026)</p>
-        <a href="#">Impressum</a>
-        <a href="https://github.com/TimoIndlekofer" target="_blank">GitHub</a>
-        <a href="https://pokeapi.co/" target="_blank">PokéAPI</a>
+        <div class="footer-container">
+            <p>Erstellt: Timo (Juni 2026)</p>
+            <div class="footer-links">
+                <a href="#">Impressum</a>
+                <a href="https://github.com/TimoIndlekofer" target="_blank">GitHub</a>
+                <a href="https://pokeapi.co/" target="_blank">PokéAPI</a>
+            </div>
+        </div>
+
     </footer>
 
     <!-- Dialog for Pokemon details -->
@@ -74,7 +80,8 @@
             <header class="dialog-header-container" id="header-container">
                 <div class="dialog-header-top">
                     <span class="dialog-header-id" id="header-id">#1</span>
-                    <button class="dialog-header-close-button" id="header-close-button" onclick="closeDialog()">X</button>
+                    <button class="dialog-header-close-button" id="header-close-button"
+                        onclick="closeDialog()">X</button>
                 </div>
                 <div class="dialog-header-bottom">
                     <h3 id="header-name">Pokemon name</h3>
@@ -82,7 +89,8 @@
                         <span class="type-badge" id="header-badge1">Badge 1</span>
                         <span class="type-badge" id="header-badge2">Badge 2</span>
                     </div>
-                    <img src="./assets/img/placeholder_pokemon_small.png" alt="Pokemon picture" class="dialog-img" id="header-img">
+                    <img src="./assets/img/placeholder_pokemon_small.png" alt="Pokemon picture" class="dialog-img"
+                        id="header-img">
                 </div>
             </header>
 
@@ -253,8 +261,10 @@
 
             <!-- Dialog footer -->
             <footer class="dialog-footer">
-                <button class="dialog-nav-button" id="dialog-back-button" onclick="backButtonInDialog()" disabled><span>&laquo;</span> Back</button>
-                <button class="dialog-nav-button" id="dialog-next-button" onclick="nextButtonInDialog()">Next <span>&raquo;</span></button>
+                <button class="dialog-nav-button" id="dialog-back-button" onclick="backButtonInDialog()"
+                    disabled><span>&laquo;</span> Back</button>
+                <button class="dialog-nav-button" id="dialog-next-button" onclick="nextButtonInDialog()">Next
+                    <span>&raquo;</span></button>
             </footer>
         </div>
     </dialog>

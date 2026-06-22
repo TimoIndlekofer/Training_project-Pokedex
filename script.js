@@ -25,7 +25,10 @@ let allPokemons = [];
 let allPokemonDetails = [];
 let allPokemonSpeciesDetails = [];
 let pokemonEvolutionChain = [];
+let numbersOfPokemon = [];
 let offset = 20;
+
+let firstWebsiteStart = true;
 
 
 
@@ -34,7 +37,8 @@ let offset = 20;
 function init() {
     console.log(allPokemons);
     startPositionAfterWebsiteLoading();
-    fetchAllPokemons();
+    checkLocalStorage();
+    // fetchAllPokemons();
     initClearButton();
     searchButtonEnterKey();
 }
@@ -79,6 +83,19 @@ async function fetchPokemonDetails(pokemonURL) {
 }
 
 
+function checkFirstWebsiteStart() {
+    const value = loadDataFromLocalStorage();
+
+    if (firstWebsiteStart && value > 20) {
+        lastPositionAfterWebsiteLoading();
+    }
+
+    if (firstWebsiteStart) {
+        firstWebsiteStart = false;
+    }
+}
+
+
 async function renderPokemons(pokemonList) {
     pokemonCardsContainer.innerHTML = '';
 
@@ -92,6 +109,8 @@ async function renderPokemons(pokemonList) {
         pokemonCardsData += pokemonDetails;
     }
     pokemonCardsContainer.innerHTML = pokemonCardsData; 
+
+    checkFirstWebsiteStart();
 
     if (loadingSpinner) {
         loadingSpinner.style.display = 'none';
@@ -111,6 +130,7 @@ async function fetchMorePokemons() {
         allPokemons.push(...responseAsJSON.results);
         await renderPokemons(allPokemons);
         loadMoreButtonActivated();
+        saveDataToLocalStorage();
     } catch (error) {
         console.log('Fehler beim Laden der Daten:', error);        
     }
@@ -632,3 +652,48 @@ function nextButtonInDialog() {
         renderPokemonInDialog(nextPokemonID.id);
     }
 }
+
+
+function saveDataToLocalStorage() {
+    localStorage.setItem('NumberOfPokemon', allPokemonDetails.length);
+}
+
+
+function loadDataFromLocalStorage() {
+    return localStorage.getItem('NumberOfPokemon');
+}
+
+
+function lastPositionAfterWebsiteLoading() {
+    requestAnimationFrame(() => {
+        window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: 'smooth'
+        });
+    });  
+}
+
+
+async function fetchAllPokemonsFromLocalStorage(value) {
+    try {
+        let response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${value}&offset=0`);
+        let responseAsJSON = await response.json();
+        allPokemons.push(...responseAsJSON.results);
+        offset = allPokemons.length;        
+        renderPokemons(allPokemons);
+    } catch (error) {
+        console.log('Fehler beim Laden der Daten:', error);        
+    }
+}
+
+
+function checkLocalStorage() {
+    const value = loadDataFromLocalStorage();
+
+    if (!value || value == 0) {
+        return fetchAllPokemons();
+    } 
+    fetchAllPokemonsFromLocalStorage(value);
+}
+
+
