@@ -92,10 +92,10 @@ function getEvolutionChainTemplate(allPokemonsFromChainFound, lastPokemon) {
                         <div class="dialog-evolution-img">
                             <img src="${allPokemonsFromChainFound.sprites.other.home.front_default}" alt="Pokemon picture">
                         </div>
-                    </div>
-                    <div class="dialog-evolution-details-container">
-                        <span class="dialog-evolution-id">#${allPokemonsFromChainFound.id}</span>
-                        <span class="dialog-evolution-name">${allPokemonsFromChainFound.name}</span>
+                        <div class="dialog-evolution-details-container">
+                            <span class="dialog-evolution-id">#${allPokemonsFromChainFound.id}</span>
+                            <span class="dialog-evolution-name">${allPokemonsFromChainFound.name}</span>
+                        </div>
                     </div>
                     <!-- Arrow -->
                     ${arrow}`

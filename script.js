@@ -18,6 +18,7 @@ const baseStatsTab = document.getElementById('tab-base-stats');
 const evolutionTab = document.getElementById('tab-evolution');
 const backButton = document.getElementById('dialog-back-button');
 const nextButton = document.getElementById('dialog-next-button');
+const evolutionData = document.getElementById('data-evolution');
 
 let pokemonCardsContainer = document.getElementById('pokemon-cards-container');
 
@@ -569,10 +570,11 @@ function searchAllPokemonsInEvolutionChain(basicPokemon, allPokemonsFromChain) {
 
 
 function addPokemonDataToEvolutionChain(allPokemonsFromChain) {
-    const evolutionTabHeadline = '<h4>Evolution</h4>';
+    // const evolutionTabHeadline = '<div><h4>Evolution</h4></div>';
     let pokemonChain = [];
 
-    evolutionTab.innerHTML = '';
+    // evolutionTab.innerHTML = '';
+    evolutionData.innerHTML = '';
 
     for (let index = 0; index < allPokemonsFromChain.length; index++) {
         const pokemonNames = allPokemonsFromChain[index];
@@ -580,7 +582,8 @@ function addPokemonDataToEvolutionChain(allPokemonsFromChain) {
         const lastPokemon = (index === allPokemonsFromChain.length -1);
         pokemonChain += getEvolutionChainTemplate(allPokemonsFromChainFound, lastPokemon);
     }
-    evolutionTab.innerHTML = evolutionTabHeadline + pokemonChain;
+    // evolutionTab.innerHTML = evolutionTabHeadline + pokemonChain;
+    evolutionData.innerHTML = pokemonChain;
 }
 
 

@@ -219,7 +219,8 @@
 
     gap: 1.5rem;
 
-    min-height: 120vh;
+    /* min-height: 120vh; */
+    min-height: 100vh;
 }
 
 
