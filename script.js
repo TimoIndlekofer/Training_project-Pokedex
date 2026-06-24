@@ -331,7 +331,7 @@ function closeDialog() {
     evolutionTab.classList.add('hidden');
 
     dialogBox.close();
-    clearDataInDialog();
+    clearDataInDialogTabAbout();
 }
 
 
@@ -655,7 +655,7 @@ function checkNextButtonInDialog() {
 
 function backButtonInDialog() {
     const singlePokemonID = allPokemonDetails.findIndex(pokemon => Number(pokemon.id) === Number(currentPokemonID));
-    clearDataInDialog();
+    clearDataInDialogTabAbout();
 
     if (singlePokemonID > 0) {
         const previousPokemonID = allPokemonDetails[singlePokemonID - 1];
@@ -666,7 +666,7 @@ function backButtonInDialog() {
 
 function nextButtonInDialog() {
     const singlePokemonID = allPokemonDetails.findIndex(pokemon => Number(pokemon.id) === Number(currentPokemonID));
-    clearDataInDialog();
+    clearDataInDialogTabAbout();
 
     if (singlePokemonID !== -1 && singlePokemonID < allPokemonDetails.length - 1) {
         const nextPokemonID = allPokemonDetails[singlePokemonID + 1];
@@ -675,7 +675,7 @@ function nextButtonInDialog() {
 }
 
 
-function clearDataInDialog() {
+function clearDataInDialogTabAbout() {
     const aboutTabData = document.querySelectorAll('[data-pokemon]');
 
     for (let index = 0; index < aboutTabData.length; index++) {
