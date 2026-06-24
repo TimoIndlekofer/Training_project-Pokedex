@@ -37,7 +37,7 @@
     </header>
 
     <!-- Main -->
-    <main class="content-main" data-id="content">
+    <main class="content-main" data-id="content" aria-label="Pokemon overview">
         <!-- Search bar error message -->
         <div class="no-results-container" id="no-results-error-message">
             <h2>No Pokemon found!</h2>
@@ -95,7 +95,7 @@
             </header>
 
             <!-- Dialog main -->
-            <main class="dialog-main-container">
+            <main class="dialog-main-container" aria-label="Pokemon details">
                 <!-- Dialog nav -->
                 <nav class="dialog-tab-nav">
                     <button class="dialog-tab-button" id="dialog-about-button"
@@ -109,8 +109,8 @@
                 <!-- Dialog tab: About -->
                 <div class="dialog-tab-content" id="tab-about">
                     <!-- Section 1: Basic data -->
+                    <h4>Basic data</h4>
                     <dl class="dialog-about-list">
-                        <h4>Basic data</h4>
                         <dt>Species</dt>
                         <dd data-pokemon="species"></dd>
 
@@ -123,9 +123,11 @@
                         <dt>Abilities</dt>
                         <dd data-pokemon="abilities"><span class="hidden-ability">Test</span>
                         </dd>
+                    </dl>
 
-                        <!-- Section 2: Training -->
-                        <h4>Training</h4>
+                    <!-- Section 2: Training -->
+                    <h4>Training</h4>
+                    <dl class="dialog-about-list">
                         <dt>Catch rate</dt>
                         <dd data-pokemon="catch-rate"></dd>
 
@@ -134,9 +136,11 @@
 
                         <dt>Growth</dt>
                         <dd data-pokemon="growth"></dd>
+                    </dl>
 
-                        <!-- Section 3: Environment -->
-                        <h4>Environment</h4>
+                    <!-- Section 3: Environment -->
+                    <h4>Environment</h4>
+                    <dl class="dialog-about-list">
                         <dt>Egg groups</dt>
                         <dd data-pokemon="egg-groups"></dd>
 
@@ -147,9 +151,9 @@
 
                 <!-- Dialog tab: Base stats -->
                 <div class="dialog-tab-content" id="tab-base-stats">
+                    <h4>Base stats</h4>
 
                     <dl class="dialog-stats-list">
-                        <h4>Base stats</h4>
                         <dt>HP</dt>
                         <dd>
                             <span class="dialog-stat-value" data-pokemon="hp"></span>
