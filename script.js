@@ -10,6 +10,8 @@ const letterMessage = document.getElementById('search-bar-letter-message');
 const loadingSpinner = document.getElementById('loading-spinner');
 
 const dialogBox = document.getElementById('dialog-pokemon-details');
+const headerContainer = document.getElementById('header-container');
+const headerCloseButton = document.getElementById('header-close-button');
 const aboutButton = document.getElementById('dialog-about-button');
 const baseStatsButton = document.getElementById('dialog-base-stats-button');
 const evolutionButton = document.getElementById('dialog-evolution-button');
@@ -97,10 +99,16 @@ function checkFirstWebsiteStart() {
 }
 
 
-async function renderPokemons(pokemonList) {
-    pokemonCardsContainer.innerHTML = '';
+function removeLoadingSpinner() {
+    if (loadingSpinner) {
+        loadingSpinner.style.display = 'none';
+    }
+}
 
+
+async function renderPokemons(pokemonList) {
     let pokemonCardsData = [];
+    pokemonCardsContainer.innerHTML = '';
 
     for (let i = 0; i < pokemonList.length; i++) {
         if(!pokemonList[i]) { continue; }
@@ -112,10 +120,7 @@ async function renderPokemons(pokemonList) {
     pokemonCardsContainer.innerHTML = pokemonCardsData; 
 
     checkFirstWebsiteStart();
-
-    if (loadingSpinner) {
-        loadingSpinner.style.display = 'none';
-    }
+    removeLoadingSpinner();
 }
 
 
@@ -326,6 +331,7 @@ function closeDialog() {
     evolutionTab.classList.add('hidden');
 
     dialogBox.close();
+    clearDataInDialog();
 }
 
 
@@ -341,7 +347,6 @@ let currentPokemonID = 0;
 async function renderPokemonInDialog(id) { 
     currentPokemonID = Number(id);
     
-
     showPokemonDetailsInDialog();
     renderDialogHeader(id);
     await renderDialogMainTabAbout(id);
@@ -377,14 +382,25 @@ function addBackgroundInDialogHeader(singlePokemonID) {
     const allTypes = ['normal', 'fire', 'water', 'electric', 'grass', 'ice', 'fighting', 'poison', 'ground', 'flying', 'psychic', 'bug', 'rock', 'ghost', 'dragon', 'dark', 'steel', 'fairy'];
     const typeName = singlePokemonID.types[0].type.name;
 
-    allTypes.forEach(type => {
-        // document.getElementById('wrapper').classList.remove('bg-' + type);
-        document.getElementById('header-container').classList.remove('bg-' + type);
-        document.getElementById('header-close-button').classList.remove('bg-' + type);
-    });
-    // document.getElementById('wrapper').classList.add('bg-' + typeName);
-    document.getElementById('header-container').classList.add('bg-' + typeName);
-    document.getElementById('header-close-button').classList.add('bg-' + typeName);
+    for (let index = 0; index < allTypes.length; index++) {
+        const className = 'bg-' + allTypes[index];
+
+        headerContainer.classList.remove(className);
+        headerCloseButton.classList.remove(className);        
+    }
+    headerContainer.classList.add('bg-' + typeName);
+    headerCloseButton.classList.add('bg-' + typeName);
+
+
+    // Alte Variante:
+    // allTypes.forEach(type => {
+    //     // document.getElementById('wrapper').classList.remove('bg-' + type);
+    //     document.getElementById('header-container').classList.remove('bg-' + type);
+    //     document.getElementById('header-close-button').classList.remove('bg-' + type);
+    // });
+    // // document.getElementById('wrapper').classList.add('bg-' + typeName);
+    // document.getElementById('header-container').classList.add('bg-' + typeName);
+    // document.getElementById('header-close-button').classList.add('bg-' + typeName);
 }
 
 
@@ -639,6 +655,7 @@ function checkNextButtonInDialog() {
 
 function backButtonInDialog() {
     const singlePokemonID = allPokemonDetails.findIndex(pokemon => Number(pokemon.id) === Number(currentPokemonID));
+    clearDataInDialog();
 
     if (singlePokemonID > 0) {
         const previousPokemonID = allPokemonDetails[singlePokemonID - 1];
@@ -649,10 +666,20 @@ function backButtonInDialog() {
 
 function nextButtonInDialog() {
     const singlePokemonID = allPokemonDetails.findIndex(pokemon => Number(pokemon.id) === Number(currentPokemonID));
+    clearDataInDialog();
 
     if (singlePokemonID !== -1 && singlePokemonID < allPokemonDetails.length - 1) {
         const nextPokemonID = allPokemonDetails[singlePokemonID + 1];
         renderPokemonInDialog(nextPokemonID.id);
+    }
+}
+
+
+function clearDataInDialog() {
+    const aboutTabData = document.querySelectorAll('[data-pokemon]');
+
+    for (let index = 0; index < aboutTabData.length; index++) {
+        aboutTabData[index].innerText = '';;        
     }
 }
 
@@ -698,5 +725,3 @@ function checkLocalStorage() {
     } 
     fetchAllPokemonsFromLocalStorage(value);
 }
-
-
