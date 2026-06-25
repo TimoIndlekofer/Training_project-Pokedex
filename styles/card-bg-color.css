@@ -1,13 +1,11 @@
 /* ##### CSS file for Pokemon card background color ##### */
 
 .bg-normal {
-    /* background-color: #7574E5; */
     background-color: #6358CA;
 }
 
 
 .bg-fire {
-    /* background-color: #B8561C; */
     background-color: #B4531B;
 }
 
@@ -18,19 +16,16 @@
 
 
 .bg-electric {
-    /* background-color: #BFA01D; */
     background-color: #836E14;
 }
 
 
 .bg-grass {
-    /* background-color: #558C33; */
     background-color: #3B7C2D;
 }
 
 
 .bg-ice {
-    /* background-color: #61A3A0; */
     background-color: #477876;
 }
 
@@ -46,13 +41,11 @@
 
 
 .bg-ground {
-    /* background-color: #A68A44; */
     background-color: #846E36;
 }
 
 
 .bg-flying {
-    /* background-color: #7862BF; */
     background-color: #7663BD;
 }
 
@@ -63,13 +56,11 @@
 
 
 .bg-bug {
-    /* background-color: #768511; */
     background-color: #6B770F;
 }
 
 
 .bg-rock {
-    /* background-color: #857524; */
     background-color: #796A1C;
 }
 
@@ -90,12 +81,10 @@
 
 
 .bg-steel {
-    /* background-color: #7D7D93; */
     background-color: #6E5E82;
  }
 
 
 .bg-fairy {
-    /* background-color: #A35C80; */
     background-color: #9F5A7D;
 }
