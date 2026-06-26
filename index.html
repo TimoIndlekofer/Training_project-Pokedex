@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="de">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokedex</title>
-
+    <!-- Favicon -->
+    <link rel="icon" href="./assets/img/pokedex_logo.png" type="image/png">
     <!-- CSS files -->
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./styles/standard.css">
@@ -22,12 +22,11 @@
             <img src="./assets/img/pokedex_logo.png" alt="Pokedox logo" class="header-logo">
             <h1>Pokedex</h1>
         </div>
-
         <!-- Search bar -->
         <div class="header-search-bar-container" id="search-bar-container">
             <span class="header-search-bar-icon">🔍</span>
             <input type="text" placeholder="Search Pokemon ..." data-id="search-input" class="header-search-bar"
-                id="search-bar-input" oninput="if(this.value.trim() === '') renderPokemons(allPokemons), startSearch()">
+                id="search-bar-input" oninput="resetSearchBarIfEmpty(this)">
             <button type="button" class="header-search-bar-clear-button" id="search-bar-clear-button">X</button>
             <button class="header-search-bar-button" id="search-bar-button" onclick="startSearch()">Search</button>
         </div>
@@ -37,22 +36,19 @@
     </header>
 
     <!-- Main -->
-    <main class="content-main" data-id="content" aria-label="Pokemon overview">
+    <main class="content-main" id="top" data-id="content" aria-label="Pokemon overview">
         <!-- Search bar error message -->
         <div class="no-results-container" id="no-results-error-message">
             <h2>No Pokemon found!</h2>
             <p>Please check your spelling or try a different Pokemon name.</p>
         </div>
-
         <!-- Pokemon cards -->
         <section class="pokemon-cards-main" id="pokemon-cards-container"></section>
-
         <!-- Loading spinner -->
         <div class="containt-main-loading-spinner-container" id="loading-spinner">
             <div class="pokeball-spinner"></div>
             <p>Catching Pokemon ...</p>
         </div>
-
         <!-- Load more Pokemons button -->
         <div class="button-load-more-container">
             <button class="button-load-more" id="load-more-pokemons" data-id="load-more-button"
@@ -63,16 +59,17 @@
     <!-- Footer -->
     <footer>
         <div class="footer-container">
-            <p>Created: Timo Indlekofer (June 2026)</p>
+            <p class="footer-created-by">&copy; 2026 Created by Timo Indlekofer</p>
+            <p class="footer-disclaimer">Disclaimer: This is a non-commercial practice project created for educational purposes. All Pokémon data and graphics are the property of their respective rights holders. The data is provided via the free PokeAPI.</p>
             <div class="footer-links">
-                <a href="#">Impressum</a>
+                <a href="#" onclick="openImpressum(); return false" aria-haspopup="dialog">Impressum</a>
+                <a href="#" onclick="openPrivacyPolicy(); return false" aria-haspopup="dialog">Privacy Policy</a>
                 <a href="https://github.com/TimoIndlekofer" target="_blank">GitHub</a>
                 <a href="https://pokeapi.co/" target="_blank">PokéAPI</a>
+                <a href="#top">Back to top &uarr;</a>
             </div>
         </div>
     </footer>
-
-
 
     <!-- Dialog for Pokemon details -->
     <dialog class="dialog-card-large" id="dialog-pokemon-details">
@@ -125,7 +122,6 @@
                         <dd data-pokemon="abilities">
                         </dd>
                     </dl>
-
                     <!-- Section 2: Training -->
                     <h4>Training</h4>
                     <dl class="dialog-about-list">
@@ -138,7 +134,6 @@
                         <dt>Growth</dt>
                         <dd data-pokemon="growth"></dd>
                     </dl>
-
                     <!-- Section 3: Environment -->
                     <h4>Environment</h4>
                     <dl class="dialog-about-list">
@@ -162,7 +157,6 @@
                                 <div class="dialog-stat-bar" data-pokemon="hp-bar" style="width: 0%"></div>
                             </div>
                         </dd>
-
                         <dt>Attack</dt>
                         <dd>
                             <span class="dialog-stat-value" data-pokemon="attack"></span>
@@ -170,7 +164,6 @@
                                 <div class="dialog-stat-bar" data-pokemon="attack-bar" style="width: 0%"></div>
                             </div>
                         </dd>
-
                         <dt>Defense</dt>
                         <dd>
                             <span class="dialog-stat-value" data-pokemon="defense"></span>
@@ -178,7 +171,6 @@
                                 <div class="dialog-stat-bar" data-pokemon="defense-bar" style="width: 0%"></div>
                             </div>
                         </dd>
-
                         <dt>Sp. Attack</dt>
                         <dd>
                             <span class="dialog-stat-value" data-pokemon="special-attack"></span>
@@ -186,7 +178,6 @@
                                 <div class="dialog-stat-bar" data-pokemon="special-attack-bar" style="width: 0%"></div>
                             </div>
                         </dd>
-
                         <dt>Sp. Defense</dt>
                         <dd>
                             <span class="dialog-stat-value" data-pokemon="special-defense"></span>
@@ -194,7 +185,6 @@
                                 <div class="dialog-stat-bar" data-pokemon="special-defense-bar" style="width: 0%"></div>
                             </div>
                         </dd>
-
                         <dt>Speed</dt>
                         <dd>
                             <span class="dialog-stat-value" data-pokemon="speed"></span>
@@ -202,7 +192,6 @@
                                 <div class="dialog-stat-bar" data-pokemon="speed-bar" style="width: 0%"></div>
                             </div>
                         </dd>
-
                         <div class="dialog-stat-line"></div>
                         <dt class="dialog-stat-total-label">Total</dt>
                         <dd>
@@ -216,7 +205,6 @@
                     <div>
                         <h4>Evolution</h4>
                     </div>
-                    <!-- TESTBEREICH - OK -->
                      <div class="dialog-evolution-data" id="data-evolution"></div>
                 </div>
             </main>
@@ -235,5 +223,4 @@
     <script src="./scripts/template.js"></script>
     <script src="./script.js"></script>
 </body>
-
 </html>

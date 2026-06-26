@@ -152,6 +152,14 @@ function loadMoreButtonActivated() {
 }
 
 
+function resetSearchBarIfEmpty(input) {
+    if (input.value.trim() === '') {
+        renderPokemons(allPokemons);
+        startSearch();
+    }
+}
+
+
 function checkSearchBarInput(filterWord) {
     if (filterWord.length < 3) {
         letterMessage.style.visibility = 'visible';
@@ -663,6 +671,16 @@ function lastPositionAfterWebsiteLoading() {
             behavior: 'smooth'
         });
     });  
+}
+
+
+function openImpressum() {
+    alert("Note: This is only a practice project for educational purposes. The site will not be made publicly available, which is why no legal imprint is provided.");
+}
+
+
+function openPrivacyPolicy() {
+    alert("Note: This is only a practice project for educational purposes. The site will not be made publicly available and does not collect, store, or process any personal data from users.");
 }
 
 

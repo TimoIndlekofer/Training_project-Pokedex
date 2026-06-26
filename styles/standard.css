@@ -11,6 +11,8 @@ html {
     font-size: 1rem;
 
     scroll-behavior: smooth;
+
+    scroll-padding: 220px;
 }
 
 
@@ -83,11 +85,31 @@ img {
 
 
 h1 {
-    color: #FFFFFF;
+    /* color: #FFFFFF;
     font-size: 1.5rem;
     font-weight: 800;
     letter-spacing: 1px;
-    line-height: 1.2;
+    line-height: 1.2; */
+
+
+
+
+
+
+
+
+
+    font-family: 'Arial Black', sans-serif;
+    color: #FFCC00;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
+    text-shadow:
+        3px 3px 0px #3B4CCA,
+        -3px -3px 0px #3B4CCA,
+        3px -3px 0px #3B4CCA,
+        -3px 3px 0px #3B4CCA;
 }
 
 
