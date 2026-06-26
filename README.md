@@ -15,4 +15,6 @@
 </ul>
 <br>
 <h2>Important remarks</h2>
-<p>This website will not be published and is not commercial.</p>
+<p>Disclaimer: This is a non-commercial practice project created for educational purposes. All Pokémon data and graphics are the property of their respective rights holders. The data is provided via the free PokeAPI.</p>
+<br>
+<p>This website will not be published.</p>
