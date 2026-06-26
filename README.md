@@ -6,6 +6,7 @@
 <h2>Important notes</h2>
 <ul>
 <li>Project design by: Timo Indlekofer</li>
+<li>Project logo by: Timo Indlekofer</li>
 <li>Project pictures by: PokeAPI (<a href="https://pokeapi.co/">https://pokeapi.co/</a>)</li>
 <li>Project graphics by: PokeAPI (<a href="https://pokeapi.co/">https://pokeapi.co/</a>)</li>
 <br>
