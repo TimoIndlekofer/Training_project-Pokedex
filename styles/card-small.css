@@ -1,4 +1,6 @@
-/* ##### CSS file for small Pokemon cards (grid) in <main> ##### */
+/*  ----------------------------------------------------------------------------------------------------
+    CARD-SMALL.CSS (Small Pokemon cards (grid) in <main> on main page)
+    ---------------------------------------------------------------------------------------------------- */
 
 .pokemon-card-small {
     display: flex;
@@ -113,4 +115,3 @@
 
     padding: 5px 12px;
 }
-
