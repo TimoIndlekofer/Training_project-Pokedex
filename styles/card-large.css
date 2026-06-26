@@ -46,6 +46,11 @@
 }
 
 
+.dialog-no-scroll {
+    overflow: hidden;
+}
+
+
 
 
 
@@ -650,7 +655,7 @@
 
 
     /* ##### Dialog footer ##### */
-    
+
     .dialog-footer {
         flex-shrink: 0;
 

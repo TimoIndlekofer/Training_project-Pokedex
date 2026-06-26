@@ -12,7 +12,7 @@ function getPokemonTemplate(pokemonDetails) {
                 <span class="pokemon-card-small-name">${pokemonDetails.name}</span>
 
                 <span class="pokemon-card-small-image-container">
-                    <img src="${pokemonDetails.sprites.other.home.front_default}" alt="Pokemon picture">
+                    <img src="${pokemonDetails.sprites.other.home.front_default}" alt="Pokemon picture" data-id="card-image">
                 </span>
 
                 <span class="pokemon-card-small-badge-container">

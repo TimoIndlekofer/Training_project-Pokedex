@@ -38,11 +38,11 @@ let firstWebsiteStart = true;
 // Functions
 
 function init() {
-    console.log(allPokemons);
     startPositionAfterWebsiteLoading();
     checkLocalStorage();
     initClearButton();
     searchButtonEnterKey();
+    initDialogBackdropClick();
 }
 
 
@@ -253,6 +253,8 @@ async function filterAndShowPokemons(filterWord) {
 }
 
 
+// Dialog:
+
 function showPokemonDetailsInDialog() {
     aboutButton.classList.add('active');
     baseStatsButton.classList.remove('active');
@@ -262,6 +264,7 @@ function showPokemonDetailsInDialog() {
     baseStatsTab.classList.add('hidden');
     evolutionTab.classList.add('hidden');
     
+    document.documentElement.classList.add('dialog-no-scroll');
     dialogBox.showModal();
 }
 
@@ -304,13 +307,29 @@ function closeDialog() {
     baseStatsTab.classList.add('hidden');
     evolutionTab.classList.add('hidden');
 
+    document.documentElement.classList.remove('dialog-no-scroll');
     dialogBox.close();
     clearDataInDialogTabAbout();
 }
 
 
+function initDialogBackdropClick() {
+    dialogBox.addEventListener('click', closeDialogOnBackdropClick);
 
-// Dialog:
+    dialogBox.addEventListener('close', () => {
+        document.documentElement.classList.remove('dialog-no-scroll');
+    });
+}
+
+
+function closeDialogOnBackdropClick(event) {
+    if (event.target === dialogBox) {
+        dialogBox.close();
+        document.documentElement.classList.remove('dialog-no-scroll');
+        clearDataInDialogTabAbout();
+    }
+}
+
 
 async function renderPokemonInDialog(id) { 
     currentPokemonID = Number(id);
@@ -705,3 +724,4 @@ function checkLocalStorage() {
     } 
     fetchAllPokemonsFromLocalStorage(value);
 }
+
