@@ -53,6 +53,12 @@
 }
 
 
+.pokemon-card-small:focus-visible {
+    outline: none;
+    box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 1);
+}
+
+
 .pokemon-card-small-id {
     font-size: 0.8rem;
     font-weight: 700;
@@ -79,7 +85,7 @@
     justify-content: center;
     align-items: center;
     
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(255, 255, 255, 0.05);
     border-radius: 50%;
 
     width: 200px;

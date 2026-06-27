@@ -58,8 +58,7 @@ footer {
 
     border-top: 1px solid rgba(255, 255, 255, 0.05);
 
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding: 20px;
 }
 
 
@@ -87,11 +86,18 @@ img {
 
 
 h1 {
-    color: #FFFFFF;
-    font-size: 1.5rem;
+    font-family: 'Arial Black', 'Arial Bold', sans-serif;
+    color: #F5F6F8;
+    font-size: clamp(1.5rem, 4vw, 2.0rem);
     font-weight: 800;
-    letter-spacing: 1px;
-    line-height: 1.2;
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0));
+    transition: filter 0.3s ease;
+
+    margin: 0;
 }
 
 

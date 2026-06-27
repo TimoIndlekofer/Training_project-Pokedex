@@ -19,8 +19,10 @@
     <!-- Header -->
     <header>
         <div class="header-container-logo-title">
-            <img src="./assets/img/pokedex_logo.png" alt="Pokedox logo" class="header-logo">
-            <h1>Pokedex</h1>
+            <a href="./index.html" class="header-link" aria-label="Go to the Pokedex home page">
+                <img src="./assets/img/pokedex_logo.png" alt="Pokedox logo" class="header-logo">
+                <h1>Pokedex</h1>
+            </a>
         </div>
         <!-- Search bar -->
         <div class="header-search-bar-container" id="search-bar-container">
@@ -59,14 +61,16 @@
     <!-- Footer -->
     <footer>
         <div class="footer-container">
-            <p class="footer-created-by">&copy; 2026 Created by Timo Indlekofer</p>
-            <p class="footer-disclaimer">Disclaimer: This is a non-commercial practice project created for educational purposes. All Pokémon data and graphics are the property of their respective rights holders. The data is provided via the free PokeAPI.</p>
             <div class="footer-links">
                 <a href="#" onclick="openImpressum(); return false" aria-haspopup="dialog">Impressum</a>
                 <a href="#" onclick="openPrivacyPolicy(); return false" aria-haspopup="dialog">Privacy Policy</a>
                 <a href="https://github.com/TimoIndlekofer" target="_blank">GitHub</a>
                 <a href="https://pokeapi.co/" target="_blank">PokéAPI</a>
                 <a href="#top">Back to top &uarr;</a>
+            </div>
+            <div class="footer-notes">
+                <p class="footer-disclaimer">Disclaimer: This is a non-commercial practice project created for educational purposes. All Pokémon data and graphics are the property of their respective rights holders. The data is provided via the free PokeAPI.</p>
+                <p class="footer-created-by">&copy; 2026 Created by Timo Indlekofer</p>
             </div>
         </div>
     </footer>
