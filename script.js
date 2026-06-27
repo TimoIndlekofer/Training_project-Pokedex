@@ -69,7 +69,6 @@ async function fetchPokemonDetails(pokemonURL) {
     try {
         const responseDetails = await fetch(pokemonURL);
         const pokemonDetails = await responseDetails.json();
-        console.log(pokemonDetails);
 
         const checkPokemonID = allPokemonDetails.some(pokemon => pokemon.id === pokemonDetails.id);
         if (!checkPokemonID) {
@@ -724,4 +723,3 @@ function checkLocalStorage() {
     } 
     fetchAllPokemonsFromLocalStorage(value);
 }
-
