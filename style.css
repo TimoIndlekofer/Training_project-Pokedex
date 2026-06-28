@@ -222,7 +222,7 @@
     width: 100%;
     max-width: 1440px;
     margin: 0 auto;
-    padding: 250px 16px 2rem 16px;
+    padding: 230px 16px 2rem 16px;
 }
 
 
@@ -230,7 +230,6 @@
     display: grid;
     justify-content: center;
     justify-items: center;
-
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
 
     gap: 1.5rem;
@@ -280,6 +279,7 @@
 .button-load-more-container {
     display: flex;
     justify-content: center;
+
     margin-top: 20px;
 }
 
@@ -411,7 +411,6 @@
     border-radius: 4px;
 
     white-space: nowrap;
-
     transform: translateZ(0);
     will-change: box-shadow;
 
@@ -453,6 +452,13 @@
         font-size: 1rem;
     }
 
+
+    /* ##### Main ##### */
+
+    .content-main {
+        padding: 250px 16px 2rem 16px;
+    }
+   
 
     /* ##### Footer ##### */
 
