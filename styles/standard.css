@@ -14,16 +14,22 @@ html {
 
     scroll-behavior: smooth;
 
+    height: 100%;
+
     scroll-padding: 220px;
 }
 
 
 body {
+    display: flex;
+    flex-direction: column;
+
     background-color: #11141A;
 
     line-height: 1.5;
     font-family: sans-serif;
 
+    height: 100%;
 }
 
 
@@ -32,8 +38,9 @@ header {
 
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
     z-index: 100;
 
     padding-left: 16px;
@@ -44,6 +51,8 @@ header {
 
 main {
     background-color: #11141A;
+
+    flex: 1;
 
     padding-top: 20px;
     padding-bottom: 20px;

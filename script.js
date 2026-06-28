@@ -127,10 +127,10 @@ async function fetchMorePokemons() {
         let responseAsJSON = await response.json();
         offset += 20;
 
-        loadMoreButtonDeactivated();
+        deactivateLoadMoreButton();
         allPokemons.push(...responseAsJSON.results);
         await renderPokemons(allPokemons);
-        loadMoreButtonActivated();
+        activateLoadMoreButton();
         saveDataToLocalStorage();
     } catch (error) {
         console.log('Fehler beim Laden der Daten:', error);        
@@ -138,13 +138,13 @@ async function fetchMorePokemons() {
 }
 
 
-function loadMoreButtonDeactivated() {
+function deactivateLoadMoreButton() {
     loadMoreButton.disabled = true;
     loadMoreButton.classList.add('deactivate');
 }
 
 
-function loadMoreButtonActivated() {
+function activateLoadMoreButton() {
     loadMoreButton.disabled = false;
     loadMoreButton.classList.remove('deactivate');
     loadMoreButton.style.display = 'block';
@@ -193,7 +193,7 @@ function clearSearchBar() {
     errorMessage.style.display = 'none';
     searchBar.focus();
     renderPokemons(allPokemons);
-    loadMoreButtonActivated();
+    activateLoadMoreButton();
 }
 
 
@@ -223,16 +223,15 @@ function searchButtonEnterKey() {
 }
 
 
-function checkCurrentPokemons(currentPokemons) {
+function showSearchResults(currentPokemons) {
     if (currentPokemons.length === 0) {
         loadMoreButton.style.display = 'none';
         errorMessage.style.display = 'block';
         pokemonCardsContainer.classList.add('pokemon-cards-main-height-deactivated');
         renderPokemons([]);
-        return;
     } else {
         errorMessage.style.display = 'none';
-        return;
+        renderPokemons(currentPokemons);
     }
 }
 
@@ -247,8 +246,7 @@ async function filterAndShowPokemons(filterWord) {
         pokemon.name.toLowerCase().includes(filterWord.toLowerCase())
     );
     loadMoreButton.style.display = 'none';
-    checkCurrentPokemons(currentPokemons);
-    renderPokemons(currentPokemons);
+    showSearchResults(currentPokemons);
 }
 
 
