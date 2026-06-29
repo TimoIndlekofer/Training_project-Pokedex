@@ -13,8 +13,8 @@ let firstWebsiteStart = true;
 let pokemonCardsContainer = document.getElementById('pokemon-cards-container');
 let allPokemons = [];
 let allPokemonDetails = [];
-let numbersOfPokemon = []
-let currentViewOfPokemons = []
+let currentViewOfPokemons = [];
+let numbersOfPokemon = [];
 let offset = 20;
 
 
@@ -120,24 +120,19 @@ function removeLoadingSpinner() {
 async function renderPokemons(pokemonList) {
     let pokemonCardsData = [];
     currentViewOfPokemons = [];
-    // pokemonCardsContainer.innerHTML = '';
 
     for (let i = 0; i < pokemonList.length; i++) {
         if(!pokemonList[i]) { continue; }
 
         const pokemonURL = pokemonList[i].url;
+        const pokemonDetails = await fetchPokemonDetails(pokemonURL);
+        pokemonCardsData += pokemonDetails;
 
         const pokemonID = getPokemonIDFromURL(pokemonURL);
         const pokemonFound = allPokemonDetails.find(pokemon => pokemon.id === pokemonID);
         if (pokemonFound) { currentViewOfPokemons.push(pokemonFound); }
-        const pokemonDetails = await fetchPokemonDetails(pokemonURL);
-        pokemonCardsData += pokemonDetails;
-        // pokemonCardsData.push(getPokemonTemplate(pokemonDetails));
     }
     pokemonCardsContainer.innerHTML = pokemonCardsData;
-    // pokemonCardsContainer.insertAdjacentHTML('beforeend', pokemonCardsData.join(''));
-    
-    console.log(currentViewOfPokemons);
     
     checkFirstWebsiteStart();
     removeLoadingSpinner();
@@ -154,7 +149,6 @@ async function fetchMorePokemons() {
 
         deactivateLoadMoreButton();
         allPokemons.push(...responseAsJSON.results);
-        // await renderPokemons(allPokemons);
         await renderPokemons(allPokemons);
         activateLoadMoreButton();
         saveDataToLocalStorage();
@@ -331,16 +325,3 @@ function checkLocalStorage() {
     } 
     fetchAllPokemonsFromLocalStorage(value);
 }
-
-
-
-
-
-
-
-console.log(allPokemonDetails);
-
-
-
-
-console.log(currentViewOfPokemons);

@@ -411,12 +411,10 @@ function checkNextButtonInDialog() {
 
 
 function backButtonInDialog() {
-    // const singlePokemonID = allPokemonDetails.findIndex(pokemon => Number(pokemon.id) === Number(currentPokemonID));
     const singlePokemonID = currentViewOfPokemons.findIndex(pokemon => Number(pokemon.id) === Number(currentPokemonID));
     clearDataInDialogTabAbout();
 
     if (singlePokemonID > 0) {
-        // const previousPokemonID = allPokemonDetails[singlePokemonID - 1];
         const previousPokemonID = currentViewOfPokemons[singlePokemonID - 1];
         renderPokemonInDialog(previousPokemonID.id);
     }
@@ -424,14 +422,9 @@ function backButtonInDialog() {
 
 
 function nextButtonInDialog() {
-    // const singlePokemonID = allPokemonDetails.findIndex(pokemon => Number(pokemon.id) === Number(currentPokemonID));
     const singlePokemonID = currentViewOfPokemons.findIndex(pokemon => Number(pokemon.id) === Number(currentPokemonID));
     clearDataInDialogTabAbout();
 
-    // if (singlePokemonID !== -1 && singlePokemonID < allPokemonDetails.length - 1) {
-    //     const nextPokemonID = allPokemonDetails[singlePokemonID + 1];
-    //     renderPokemonInDialog(nextPokemonID.id);
-    // }
     if (singlePokemonID !== -1 && singlePokemonID < currentViewOfPokemons.length - 1) {
         const nextPokemonID = currentViewOfPokemons[singlePokemonID + 1];
         renderPokemonInDialog(nextPokemonID.id);
@@ -446,4 +439,3 @@ function clearDataInDialogTabAbout() {
         aboutTabData[index].innerText = '';;        
     }
 }
-
