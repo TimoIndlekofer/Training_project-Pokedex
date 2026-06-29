@@ -119,19 +119,26 @@ function removeLoadingSpinner() {
 
 async function renderPokemons(pokemonList) {
     let pokemonCardsData = [];
+    currentViewOfPokemons = [];
     // pokemonCardsContainer.innerHTML = '';
 
     for (let i = 0; i < pokemonList.length; i++) {
         if(!pokemonList[i]) { continue; }
 
         const pokemonURL = pokemonList[i].url;
+
+        const pokemonID = getPokemonIDFromURL(pokemonURL);
+        const pokemonFound = allPokemonDetails.find(pokemon => pokemon.id === pokemonID);
+        if (pokemonFound) { currentViewOfPokemons.push(pokemonFound); }
         const pokemonDetails = await fetchPokemonDetails(pokemonURL);
         pokemonCardsData += pokemonDetails;
         // pokemonCardsData.push(getPokemonTemplate(pokemonDetails));
     }
     pokemonCardsContainer.innerHTML = pokemonCardsData;
-    // pokemonCardsContainer.insertAdjacentHTML('beforeend', pokemonCardsData.join('')); 
-
+    // pokemonCardsContainer.insertAdjacentHTML('beforeend', pokemonCardsData.join(''));
+    
+    console.log(currentViewOfPokemons);
+    
     checkFirstWebsiteStart();
     removeLoadingSpinner();
 }
@@ -267,6 +274,7 @@ async function filterAndShowPokemons(filterWord) {
     const currentPokemons = allPokemons.filter(pokemon => 
         pokemon.name.toLowerCase().includes(filterWord.toLowerCase())
     );
+    currentViewOfPokemons = currentPokemons;
     loadMoreButton.style.display = 'none';
     showSearchResults(currentPokemons);
 }
@@ -323,3 +331,16 @@ function checkLocalStorage() {
     } 
     fetchAllPokemonsFromLocalStorage(value);
 }
+
+
+
+
+
+
+
+console.log(allPokemonDetails);
+
+
+
+
+console.log(currentViewOfPokemons);

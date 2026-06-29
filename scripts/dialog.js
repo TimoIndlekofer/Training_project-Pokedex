@@ -385,7 +385,7 @@ async function renderDialogMainTabEvolution(id) {
 
 
 function checkBackButtonInDialog() {
-    const singlePokemonID = allPokemonDetails.findIndex(pokemon => Number(pokemon.id) === Number(currentPokemonID));
+    const singlePokemonID = currentViewOfPokemons.findIndex(pokemon => Number(pokemon.id) === Number(currentPokemonID));
 
     if (singlePokemonID === 0) {
         backButton.disabled = true;
@@ -398,9 +398,9 @@ function checkBackButtonInDialog() {
 
 
 function checkNextButtonInDialog() {
-    const singlePokemonID = allPokemonDetails.findIndex(pokemon => Number(pokemon.id) === Number(currentPokemonID));
+    const singlePokemonID = currentViewOfPokemons.findIndex(pokemon => Number(pokemon.id) === Number(currentPokemonID));
 
-    if (singlePokemonID === allPokemonDetails.length - 1 || singlePokemonID === -1) {
+    if (singlePokemonID === currentViewOfPokemons.length - 1 || singlePokemonID === -1) {
         nextButton.disabled = true;
         nextButton.classList.add('deactivate');
     } else {
@@ -411,22 +411,29 @@ function checkNextButtonInDialog() {
 
 
 function backButtonInDialog() {
-    const singlePokemonID = allPokemonDetails.findIndex(pokemon => Number(pokemon.id) === Number(currentPokemonID));
+    // const singlePokemonID = allPokemonDetails.findIndex(pokemon => Number(pokemon.id) === Number(currentPokemonID));
+    const singlePokemonID = currentViewOfPokemons.findIndex(pokemon => Number(pokemon.id) === Number(currentPokemonID));
     clearDataInDialogTabAbout();
 
     if (singlePokemonID > 0) {
-        const previousPokemonID = allPokemonDetails[singlePokemonID - 1];
+        // const previousPokemonID = allPokemonDetails[singlePokemonID - 1];
+        const previousPokemonID = currentViewOfPokemons[singlePokemonID - 1];
         renderPokemonInDialog(previousPokemonID.id);
     }
 }
 
 
 function nextButtonInDialog() {
-    const singlePokemonID = allPokemonDetails.findIndex(pokemon => Number(pokemon.id) === Number(currentPokemonID));
+    // const singlePokemonID = allPokemonDetails.findIndex(pokemon => Number(pokemon.id) === Number(currentPokemonID));
+    const singlePokemonID = currentViewOfPokemons.findIndex(pokemon => Number(pokemon.id) === Number(currentPokemonID));
     clearDataInDialogTabAbout();
 
-    if (singlePokemonID !== -1 && singlePokemonID < allPokemonDetails.length - 1) {
-        const nextPokemonID = allPokemonDetails[singlePokemonID + 1];
+    // if (singlePokemonID !== -1 && singlePokemonID < allPokemonDetails.length - 1) {
+    //     const nextPokemonID = allPokemonDetails[singlePokemonID + 1];
+    //     renderPokemonInDialog(nextPokemonID.id);
+    // }
+    if (singlePokemonID !== -1 && singlePokemonID < currentViewOfPokemons.length - 1) {
+        const nextPokemonID = currentViewOfPokemons[singlePokemonID + 1];
         renderPokemonInDialog(nextPokemonID.id);
     }
 }
@@ -439,3 +446,4 @@ function clearDataInDialogTabAbout() {
         aboutTabData[index].innerText = '';;        
     }
 }
+
