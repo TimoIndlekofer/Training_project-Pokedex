@@ -19,6 +19,7 @@ let pokemonEvolutionChain = [];
 
 
 
+
 // Functions:
 
 function showPokemonDetailsInDialog() {
