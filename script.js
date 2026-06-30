@@ -29,6 +29,8 @@ function init() {
     initClearButton();
     searchButtonEnterKey();
     initDialogBackdropClick();
+    closeDialogEscapeKey();
+    stopPropagationInDialog();
 }
 
 

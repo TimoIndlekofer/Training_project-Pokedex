@@ -3,9 +3,8 @@
 const dialogBox = document.getElementById('dialog-pokemon-details');
 const headerContainer = document.getElementById('header-container');
 const headerCloseButton = document.getElementById('header-close-button');
-const aboutButton = document.getElementById('dialog-about-button');
-const baseStatsButton = document.getElementById('dialog-base-stats-button');
-const evolutionButton = document.getElementById('dialog-evolution-button');
+const dialogTabButtons = document.querySelectorAll('.dialog-tab-button');
+const dialogTabContent = document.querySelectorAll('.dialog-tab-content');
 const aboutTab = document.getElementById('tab-about');
 const baseStatsTab = document.getElementById('tab-base-stats');
 const evolutionTab = document.getElementById('tab-evolution');
@@ -20,60 +19,41 @@ let pokemonEvolutionChain = [];
 
 
 
-
 // Functions:
 
 function showPokemonDetailsInDialog() {
-    aboutButton.classList.add('active');
-    baseStatsButton.classList.remove('active');
-    evolutionButton.classList.remove('active');
-
-    aboutTab.classList.remove('hidden');
-    baseStatsTab.classList.add('hidden');
-    evolutionTab.classList.add('hidden');
-    
     document.documentElement.classList.add('dialog-no-scroll');
     dialogBox.showModal();
 }
 
 
-function showDialogTabAbout() {
-    aboutButton.classList.add('active');
-    baseStatsButton.classList.remove('active');
-    evolutionButton.classList.remove('active');
+function toggleDialogTabs() {
+    const activeButton = event.target.id;
+    const activeTab = event.target.dataset.tab;
 
-    aboutTab.classList.remove('hidden');
-    baseStatsTab.classList.add('hidden');
-    evolutionTab.classList.add('hidden');
+    dialogTabButtons.forEach(button => {        
+        button.classList.toggle('active', button.id === activeButton);
+    });
+
+    dialogTabContent.forEach(tab => {
+        tab.classList.toggle('active', tab.id === activeTab);
+    });
 }
 
 
-function showDialogTabBaseStats() {
-    aboutButton.classList.remove('active');
-    baseStatsButton.classList.add('active');
-    evolutionButton.classList.remove('active');
+function backToDialogTabAbout() {
+    dialogTabButtons.forEach(button => {        
+        button.classList.toggle('active', button.id === 'dialog-about-button');
+    });
 
-    aboutTab.classList.add('hidden');
-    baseStatsTab.classList.remove('hidden');
-    evolutionTab.classList.add('hidden');    
-}
-
-
-function showDialogTabEvolution() {
-    aboutButton.classList.remove('active');
-    baseStatsButton.classList.remove('active');
-    evolutionButton.classList.add('active');
-
-    aboutTab.classList.add('hidden');
-    baseStatsTab.classList.add('hidden');
-    evolutionTab.classList.remove('hidden');
+    dialogTabContent.forEach(tab => {
+        tab.classList.toggle('active', tab.id === 'tab-about');
+    });
 }
 
 
 function closeDialog() {
-    aboutTab.classList.add('hidden');
-    baseStatsTab.classList.add('hidden');
-    evolutionTab.classList.add('hidden');
+    backToDialogTabAbout();
 
     document.documentElement.classList.remove('dialog-no-scroll');
     dialogBox.close();
@@ -91,11 +71,22 @@ function initDialogBackdropClick() {
 
 
 function closeDialogOnBackdropClick(event) {
+    backToDialogTabAbout();
+
     if (event.target === dialogBox) {
         dialogBox.close();
         document.documentElement.classList.remove('dialog-no-scroll');
         clearDataInDialogTabAbout();
     }
+}
+
+
+function closeDialogEscapeKey() {
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && dialogBox.open) {
+            closeDialog();
+        }
+    });
 }
 
 
@@ -438,4 +429,13 @@ function clearDataInDialogTabAbout() {
     for (let index = 0; index < aboutTabData.length; index++) {
         aboutTabData[index].innerText = '';;        
     }
+}
+
+
+function stopPropagationInDialog() {
+    const dialogWrapper = document.querySelector('.dialog-wrapper');
+
+    dialogWrapper.addEventListener('click', (event) => {
+        event.stopPropagation();
+    });
 }
