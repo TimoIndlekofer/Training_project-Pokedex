@@ -6,7 +6,7 @@
     3. DIALOG MAIN (Tab buttons, tab about, tab base stats, tab evolution)
     4. DIALOG FOOTER (Navigation buttons)
     5. TABLET VERSION (min-width: 768px)
-    6. DESKTOP VERSION (min-width: 1024px) and (max-height: 600px)
+    6. NOTEBOOK VERSION (min-width: 1024px) and (max-height: 600px)
     ==================================================================================================== */
 
 
@@ -698,7 +698,7 @@
 
 
 /*  ====================================================================================================
-    6. DESKTOP VERSION (min-width: 1024px) and (max-height: 600px)
+    6. NOTEBOOK VERSION (min-width: 1024px) and (max-height: 600px)
     ==================================================================================================== */
 
 @media (min-width: 1024px) and (max-height: 600px) {
