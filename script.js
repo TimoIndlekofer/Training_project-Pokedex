@@ -52,7 +52,6 @@ async function fetchAllPokemons() {
         let response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=20&offset=0');
         let responseAsJSON = await response.json();
         allPokemons.push(...responseAsJSON.results);
-        // renderPokemons(allPokemons);
         await renderPokemons(responseAsJSON.results);
     } catch (error) {
         console.log('Fehler beim Laden der Daten:', error);        
@@ -77,25 +76,28 @@ async function fetchPokemonDetails(pokemonURL) {
         const responseDetails = await fetch(pokemonURL);
         const pokemonDetails = await responseDetails.json();
         allPokemonDetails.push(pokemonDetails);
-        // return pokemonDetails;
         return getPokemonTemplate(pokemonDetails);
     } catch (error) {
         console.log('Fehler beim Laden der Daten:', error);
     }
-    
-    // Alte Variante:
-    // try {
-    //     const responseDetails = await fetch(pokemonURL);
-    //     const pokemonDetails = await responseDetails.json();
+}
 
-    //     const checkPokemonID = allPokemonDetails.some(pokemon => pokemon.id === pokemonDetails.id);
-    //     if (!checkPokemonID) {
-    //         allPokemonDetails.push(pokemonDetails);
-    //     }
-    //     return getPokemonTemplate(pokemonDetails);
-    // } catch (error) {
-    //     console.log('Fehler beim Laden der Daten:', error);
-    // }
+
+async function getPokemonDetails(pokemonList) {
+    let pokemonCardsData = [];
+
+    for (let i = 0; i < pokemonList.length; i++) {
+        if(!pokemonList[i]) { continue; }
+
+        const pokemonURL = pokemonList[i].url;
+        const pokemonDetails = await fetchPokemonDetails(pokemonURL);
+        pokemonCardsData.push(pokemonDetails);
+
+        const pokemonID = getPokemonIDFromURL(pokemonURL);
+        const pokemonFound = allPokemonDetails.find(pokemon => pokemon.id === pokemonID);
+        if (pokemonFound) { currentViewOfPokemons.push(pokemonFound); }
+    }
+    return pokemonCardsData.join('');
 }
 
 
@@ -120,31 +122,25 @@ function removeLoadingSpinner() {
 
 
 async function renderPokemons(pokemonList) {
-    let pokemonCardsData = [];
     currentViewOfPokemons = [];
 
-    for (let i = 0; i < pokemonList.length; i++) {
-        if(!pokemonList[i]) { continue; }
-
-        const pokemonURL = pokemonList[i].url;
-        const pokemonDetails = await fetchPokemonDetails(pokemonURL);
-        pokemonCardsData += pokemonDetails;
-
-        const pokemonID = getPokemonIDFromURL(pokemonURL);
-        const pokemonFound = allPokemonDetails.find(pokemon => pokemon.id === pokemonID);
-        if (pokemonFound) { currentViewOfPokemons.push(pokemonFound); }
-    }
+    const pokemonCardsData = await getPokemonDetails(pokemonList);
     pokemonCardsContainer.innerHTML = pokemonCardsData;
-    
+
     checkFirstWebsiteStart();
     removeLoadingSpinner();
 }
 
 
+function addLoadingSpinner() {
+    loadingSpinner.style.display = 'flex';
+    pokemonCardsContainer.classList.remove('pokemon-cards-main-height-deactivated');
+}
+
+
 async function fetchMorePokemons() {
     try {
-        loadingSpinner.style.display = 'flex';
-        pokemonCardsContainer.classList.remove('pokemon-cards-main-height-deactivated');
+        addLoadingSpinner();
         let response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=20&offset=' + offset);
         let responseAsJSON = await response.json();
         offset += 20;
