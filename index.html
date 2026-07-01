@@ -78,22 +78,7 @@
     <dialog class="dialog-card-large" id="dialog-pokemon-details" data-id="dialog">
         <div class="dialog-wrapper" id="wrapper" data-id="overlay-pokemon-name">
             <!-- Dialog header -->
-            <header class="dialog-header-container" id="header-container">
-                <div class="dialog-header-top">
-                    <span class="dialog-header-id" id="header-id"></span>
-                    <button class="dialog-header-close-button" id="header-close-button" data-id="close-dialog-button"
-                        onclick="closeDialog()">X</button>
-                </div>
-                <div class="dialog-header-bottom">
-                    <h3 id="header-name">Pokemon name</h3>
-                    <div class="dialog-header-bottom-badges-container">
-                        <span class="type-badge" id="header-badge1">Badge 1</span>
-                        <span class="type-badge" id="header-badge2">Badge 2</span>
-                    </div>
-                    <img src="./assets/img/placeholder_pokemon_small.png" alt="Pokemon picture" class="dialog-img"
-                        id="header-img" data-id="dialog-image">
-                </div>
-            </header>
+            <header class="dialog-header-container" id="header-container"></header>
 
             <!-- Dialog main -->
             <main class="dialog-main-container" aria-label="Pokemon details">
@@ -108,96 +93,19 @@
                 <div class="dialog-tab-content active" id="tab-about">
                     <!-- Section 1: Basic data -->
                     <h4>Basic data</h4>
-                    <dl class="dialog-about-list">
-                        <dt>Species</dt>
-                        <dd data-pokemon="species"></dd>
-
-                        <dt>Height</dt>
-                        <dd data-pokemon="height"></dd>
-
-                        <dt>Weight</dt>
-                        <dd data-pokemon="weight"></dd>
-
-                        <dt>Abilities</dt>
-                        <dd data-pokemon="abilities">
-                        </dd>
-                    </dl>
+                    <dl class="dialog-about-list" id="tab-about-basic-data"></dl>
                     <!-- Section 2: Training -->
                     <h4>Training</h4>
-                    <dl class="dialog-about-list">
-                        <dt>Catch rate</dt>
-                        <dd data-pokemon="catch-rate"></dd>
-
-                        <dt>Base exp.</dt>
-                        <dd data-pokemon="base-exp"></dd>
-
-                        <dt>Growth</dt>
-                        <dd data-pokemon="growth"></dd>
-                    </dl>
+                    <dl class="dialog-about-list" id="tab-about-training-data"></dl>
                     <!-- Section 3: Environment -->
                     <h4>Environment</h4>
-                    <dl class="dialog-about-list">
-                        <dt>Egg groups</dt>
-                        <dd data-pokemon="egg-groups"></dd>
-
-                        <dt>Habitat</dt>
-                        <dd data-pokemon="habitat"></dd>
-                    </dl>
+                    <dl class="dialog-about-list" id="tab-about-environment-data"></dl>
                 </div>
 
                 <!-- Dialog tab: Base stats -->
                 <div class="dialog-tab-content" id="tab-base-stats">
                     <h4>Base stats</h4>
-
-                    <dl class="dialog-stats-list">
-                        <dt>HP</dt>
-                        <dd>
-                            <span class="dialog-stat-value" data-pokemon="hp"></span>
-                            <div class="dialog-stat-bar-container">
-                                <div class="dialog-stat-bar" data-pokemon="hp-bar" style="width: 0%"></div>
-                            </div>
-                        </dd>
-                        <dt>Attack</dt>
-                        <dd>
-                            <span class="dialog-stat-value" data-pokemon="attack"></span>
-                            <div class="dialog-stat-bar-container">
-                                <div class="dialog-stat-bar" data-pokemon="attack-bar" style="width: 0%"></div>
-                            </div>
-                        </dd>
-                        <dt>Defense</dt>
-                        <dd>
-                            <span class="dialog-stat-value" data-pokemon="defense"></span>
-                            <div class="dialog-stat-bar-container">
-                                <div class="dialog-stat-bar" data-pokemon="defense-bar" style="width: 0%"></div>
-                            </div>
-                        </dd>
-                        <dt>Sp. Attack</dt>
-                        <dd>
-                            <span class="dialog-stat-value" data-pokemon="special-attack"></span>
-                            <div class="dialog-stat-bar-container">
-                                <div class="dialog-stat-bar" data-pokemon="special-attack-bar" style="width: 0%"></div>
-                            </div>
-                        </dd>
-                        <dt>Sp. Defense</dt>
-                        <dd>
-                            <span class="dialog-stat-value" data-pokemon="special-defense"></span>
-                            <div class="dialog-stat-bar-container">
-                                <div class="dialog-stat-bar" data-pokemon="special-defense-bar" style="width: 0%"></div>
-                            </div>
-                        </dd>
-                        <dt>Speed</dt>
-                        <dd>
-                            <span class="dialog-stat-value" data-pokemon="speed"></span>
-                            <div class="dialog-stat-bar-container">
-                                <div class="dialog-stat-bar" data-pokemon="speed-bar" style="width: 0%"></div>
-                            </div>
-                        </dd>
-                        <div class="dialog-stat-line"></div>
-                        <dt class="dialog-stat-total-label">Total</dt>
-                        <dd>
-                            <span class="dialog-stat-total-value" data-pokemon="total"></span>
-                        </dd>
-                    </dl>
+                    <dl class="dialog-stats-list" id="tab-base-stats-data"></dl>
                 </div>
 
                 <!-- Dialog tab: Evolution -->
@@ -205,7 +113,7 @@
                     <div>
                         <h4>Evolution</h4>
                     </div>
-                     <div class="dialog-evolution-data" id="data-evolution"></div>
+                    <div class="dialog-evolution-data" id="data-evolution"></div>
                 </div>
             </main>
 
