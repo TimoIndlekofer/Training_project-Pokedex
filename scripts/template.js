@@ -31,13 +31,15 @@ function getHeaderDataTemplate(pokemonID, pokemonName, pokemonIMG, pokemonBadge,
                     <span class="dialog-header-id" id="header-id">${pokemonID}</span>
                     <button class="dialog-header-close-button ${currentTypeClass}" id="header-close-button" data-id="close-dialog-button" onclick="closeDialog()">X</button>
                 </div>
-                <div class="dialog-header-bottom">
+            <div class="dialog-header-bottom">
+                <div class="dialog-header-name-badges">
                     <h3 id="header-name">${pokemonName}</h3>
                     <div class="dialog-header-bottom-badges-container">
                         <span class="type-badge" id="header-badge1">${pokemonBadge}</span>
                         <span class="type-badge" id="header-badge2"></span>
                     </div>
-                    <img src="${pokemonIMG}" alt="Pokemon picture" class="dialog-img" id="header-img" data-id="dialog-image">
+                </div>
+                <img src="${pokemonIMG}" alt="Pokemon picture" class="dialog-img" id="header-img" data-id="dialog-image">
             </div>`
 }
 
